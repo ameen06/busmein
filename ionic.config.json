@@ -1,0 +1,7 @@
+{
+  "name": "busmein",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
