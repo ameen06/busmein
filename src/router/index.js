@@ -45,7 +45,7 @@ const routes = [
   {
     path: '/seat-selects',
     name: 'seat-selects',
-    component: () => import('@/views/SelectSeatsPage.vue'),
+    component: () => import('@/views/SelectSeatPage.vue'),
   },
 ]
 
