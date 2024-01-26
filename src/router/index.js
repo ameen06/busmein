@@ -10,12 +10,42 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('@/views/HomePage.vue'),
+    component: () => import('@/views/LoginPage.vue'),
   },
   {
     path: '/sign-up',
-    name: 'sign-up',
-    component: () => import('@/views/HomePage.vue'),
+    name: 'signUp',
+    component: () => import('@/views/signUpPage.vue'),
+  },
+  {
+    path: '/verify',
+    name: 'verify Page',
+    component: () => import('@/views/verifyPage.vue'),
+  },
+  {
+    path: '/booking',
+    name: 'booking Page',
+    component: () => import('@/views/BookingPage.vue'),
+  },
+  {
+    path: '/oneWay',
+    name: 'oneWay selecting Page',
+    component: () => import('@/views/oneWayPage.vue'),
+  },
+  {
+    path: '/passengerInfo',
+    name: 'passenger Info Page',
+    component: () => import('@/views/PassengerInfoPage.vue'),
+  },
+  {
+    path: '/ticketDetails',
+    name: 'ticke details',
+    component: () => import('@/views/TicketDetailsPage.vue'),
+  },
+  {
+    path: '/seatSelects',
+    name: 'seat selects',
+    component: () => import('@/views/selectSeatsPage.vue'),
   },
 ]
 
