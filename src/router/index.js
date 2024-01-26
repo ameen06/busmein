@@ -13,14 +13,14 @@ const routes = [
     component: () => import('@/views/LoginPage.vue'),
   },
   {
-    path: '/sign-up',
-    name: 'signUp',
+    path: '/register',
+    name: 'register',
     component: () => import('@/views/RegisterPage.vue'),
   },
   {
-    path: '/verify',
-    name: 'verify Page',
-    component: () => import('@/views/verifyPage.vue'),
+    path: '/verify-otp',
+    name: 'verify-otp',
+    component: () => import('@/views/VerifyPage.vue'),
   },
   {
     path: '/booking',
@@ -28,24 +28,24 @@ const routes = [
     component: () => import('@/views/BookingPage.vue'),
   },
   {
-    path: '/oneWay',
-    name: 'oneWay selecting Page',
-    component: () => import('@/views/oneWayPage.vue'),
+    path: '/one-way',
+    name: 'oneWay-selecting-page',
+    component: () => import('@/views/OneWayPage.vue'),
   },
   {
-    path: '/passengerInfo',
-    name: 'passenger Info Page',
+    path: '/passenger-info',
+    name: 'passenger-info-page',
     component: () => import('@/views/PassengerInfoPage.vue'),
   },
   {
-    path: '/ticketDetails',
-    name: 'ticke details',
+    path: '/ticket-details',
+    name: 'ticke-details',
     component: () => import('@/views/TicketDetailsPage.vue'),
   },
   {
-    path: '/seatSelects',
-    name: 'seat selects',
-    component: () => import('@/views/selectSeatsPage.vue'),
+    path: '/seat-selects',
+    name: 'seat-selects',
+    component: () => import('@/views/SelectSeatsPage.vue'),
   },
 ]
 
