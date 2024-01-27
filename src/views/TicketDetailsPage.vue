@@ -3,14 +3,16 @@
       <ion-content :fullscreen="true" >
         <div class="flex flex-col justify-center items-center ">
           <!-- header -->
-          <div class="h-[105px] w-full border-b-[1px] border-slate-500 flex items-end pb-2 pl-5 gap-2">
+          <div class=" w-full border-b-[1px] border-slate-500 flex items-end pb-2 pl-5 pt-10 gap-2">
+          <a href="/">
             <svg width="14" height="24" viewBox="0 0 14 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0.939337 10.9393C0.35355 11.5251 0.35355 12.4749 0.939337 13.0607L10.4853 22.6066C11.0711 23.1924 12.0208 23.1924 12.6066 22.6066C13.1924 22.0208 13.1924 21.0711 12.6066 20.4853L4.12132 12L12.6066 3.51472C13.1924 2.92893 13.1924 1.97919 12.6066 1.3934C12.0208 0.807611 11.0711 0.807611 10.4853 1.3934L0.939337 10.9393ZM3.3421 10.5L2 10.5V13.5L3.3421 13.5V10.5Z" fill="black"/>
             </svg>
+          </a>
             <p class="text-[20px] font-[800] text-black pt-1">Ticket Details</p>
           </div>
           <!-- ticket details -->
-          <div class="w-[314px] h-[477px] rounded-2xl shadow-2xl mt-7  relative">
+          <div class="rounded-2xl shadow-2xl mt-7 px-4 relative bg-slate-00">
             <div class="mt-[31px] pl-3 pb-3">
               <svg width="93" height="28" viewBox="0 0 93 28" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <rect width="93" height="28" fill="url(#pattern0)"/>
@@ -24,8 +26,8 @@
             </div>
             <!-- ticket -->
             <div class="flex flex-col items-center mb-2 ">
-                 <div class="w-full h-[68px]  border-b-[1px] border-slate-700 border-dashed flex justify-center items-center">
-                    <div class="w-[276px] h-[40px] flex justify-between pt-1">
+                 <div class="w-full border-b-[1px] border-slate-700 border-dashed flex justify-center items-center mt-7">
+                    <div class="flex justify-between py-1">
                     <div class="flex flex-col">
                       <p class="text-[12px] font-[600] text-blue-900">Delhi</p>
                       <p class="text-[11px] font-[400] text-slate-500">Jan 17, 12:00am</p>
@@ -64,12 +66,12 @@
                  
             </div>
             <!-- passenger details -->
-            <div class="absolute top-[340px]   w-[16px] h-[22px] bg-indigo-100  rounded-r-full"></div>
-            <div class="absolute top-[340px] ml-[299px] w-[16px] h-[22px] bg-indigo-100 rounded-l-full"></div>
+            <div class="absolute top-[341px] ml-[-16px]  w-[20px] h-[26px] bg-slate-200  rounded-r-full"></div>
+            <div class="absolute top-[341px] ml-[259px] w-[20px] h-[26px] bg-slate-200 rounded-l-full"></div>
             
-              <div class="w-full h-[202px] border-b-[1px] border-dashed border-slate-700 flex justify-center pt-8">
-              <div class="w-[276px] h-[133px] flex flex-col  gap-6">
-                <div class="flex  justify-between">
+            <div class="w-full  border-b-[1px] border-dashed border-slate-700 flex justify-center pt-8 px-5">
+              <div class="flex flex-col gap-5">
+                <div class="flex justify-between">
                   <div>
                     <p class="text-[10px] font-[400] text-slate-500">Passengers</p>
                     <p class="text-[11px] font-[500] text-black">2 Adults</p>
@@ -83,7 +85,7 @@
                     <p class="text-[11px] font-[500] text-black">2WLd94</p>
                   </div>
                 </div>
-                <div class="flex justify-between">
+                <div class="flex justify-center gap-7">
                   <div>
                     <p class="text-[10px] font-[400] text-slate-500">Passenger name</p>
                     <p class="text-[11px] font-[500] text-black">demo</p>
@@ -98,7 +100,7 @@
                   </div>
                 </div>
 
-                <div class="text-center mt-6">
+                <div class="text-center mb-12">
                   <p class="text-[12px] font-[500]">Ticket Status : CONFIRMED </p>
                  </div>
 
@@ -106,7 +108,7 @@
 
              
             </div>
-            <div class="w-full  flex justify-center items-center pt-7">
+            <div class="w-full  flex justify-center items-center py-7">
                 <svg width="184" height="70" viewBox="0 0 184 70" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M0 0.624023H5.2858V69.3748H0V0.624023ZM8.52092 69.3748H11.4968V0.624023H8.52092V69.3748ZM13.6417 69.3748H16.6117V0.624023H13.6417V69.3748ZM20.5186 69.3748H27.0242V0.624023H20.5186V69.3748ZM32.2334 69.3748H35.4862V0.624023H32.2334V69.3748ZM40.5303 69.3748H54.013V0.624023H40.5303V69.3748ZM75.6629 69.3748H80.0943V0.624023H75.6629V69.3748ZM83.9599 0.624023V69.3748H90V0.624023H83.9599ZM59.4225 69.3748H62.3217V0.624023H59.4225V69.3748ZM66.4761 69.3748H69.3754V0.624023H66.4761V69.3748Z" fill="#042F40"/>
 <path d="M184 69.375L178.714 69.375L178.714 0.624267L184 0.624268L184 69.375ZM175.479 0.624267L172.503 0.624267L172.503 69.375L175.479 69.375L175.479 0.624267ZM170.358 0.624266L167.388 0.624266L167.388 69.375L170.358 69.375L170.358 0.624266ZM163.481 0.624266L156.976 0.624265L156.976 69.375L163.481 69.375L163.481 0.624266ZM151.767 0.624265L148.514 0.624264L148.514 69.375L151.767 69.375L151.767 0.624265ZM143.47 0.624264L129.987 0.624263L129.987 69.375L143.47 69.375L143.47 0.624264ZM108.337 0.624261L103.906 0.624261L103.906 69.375L108.337 69.375L108.337 0.624261ZM100.04 69.375L100.04 0.62426L94 0.62426L94 69.375L100.04 69.375ZM124.577 0.624262L121.678 0.624262L121.678 69.375L124.577 69.375L124.577 0.624262ZM117.524 0.624262L114.625 0.624262L114.625 69.375L117.524 69.375L117.524 0.624262Z" fill="#042F40"/>
@@ -115,9 +117,9 @@
               </div>
           </div>
           <!-- track bus -->
-          <div class="absolute top-[812px] w-[330px] h-[48px] bg-blue-900 rounded-lg flex justify-center items-center"> 
+          <a href="/" class=" bg-blue-900 rounded-lg flex justify-center items-center my-10 py-2 px-[6rem]"> 
            <p class="text-[17px] font-[800] text-white">Track Bus</p>
-          </div>
+          </a>
           
         </div>
       </ion-content>

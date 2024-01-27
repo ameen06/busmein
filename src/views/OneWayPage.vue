@@ -2,8 +2,8 @@
     <ion-page>
       <ion-content :fullscreen="true">
         <div class="flex flex-col justify-center items-center">
-            <div class="w-full h-[105px] border-[1px] border-b-slate-600 flex  justify-between items-end pb-2 px-4">
-                <div class="flex  items-center gap-3 ">
+            <div class="w-full border-[1px] border-b-slate-600 flex  justify-between items-end pb-2 px-4 pt-10">
+                <div class="flex items-center gap-3">
                     <!-- back arrow -->
                     <div>
                         <svg width="14" height="24" viewBox="0 0 14 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -26,14 +26,13 @@
                     </div>
                 </div>
                 <div class="flex flex-col items-center">
-                    <div class="w-[53px] h-[26px] bg-blue-700 rounded-full flex justify-center items-center">
+                    <div class="bg-blue-700 rounded-full flex justify-center items-center px-2 py-1">
                         <p class="text-[11px] font-[700] text-white">15 Jan</p>
                     </div>
                     <p class="text-[10px] font-[600] text-slate-600">Mon</p>
                 </div>
             </div>
-
-            <div class="py-2 flex justify-center items-center gap-2">
+            <div class="flex justify-center items-center gap-2 py-2">
                 <div class="rounded-lg shadow-lg flex justify-center items-center gap-1 px-2 py-1 border-[1px] border-slate-600">
                     <svg width="23" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9.89443 15.5976C9.5721 15.5976 9.24977 15.5269 8.95675 15.3767C8.36094 15.0762 7.99954 14.5283 7.99954 13.9097V11.1878C7.99954 11.0199 7.85303 10.6929 7.70652 10.525L5.58698 8.51015C5.18652 8.14783 4.88373 7.51155 4.88373 7.0255V5.85015C4.88373 4.86922 5.70419 4.10922 6.74931 4.10922H14.2409C15.2665 4.10922 16.1065 4.86922 16.1065 5.79713V6.92829C16.1065 7.5469 15.7158 8.22736 15.3251 8.58085L12.854 10.5604C12.6977 10.6841 12.5316 10.9934 12.5316 11.2497V13.459C12.5316 14.0157 12.1605 14.6343 11.6623 14.8995L10.8907 15.3502C10.5879 15.5181 10.2461 15.5976 9.89443 15.5976ZM6.74931 5.4348C6.51489 5.4348 6.34884 5.61155 6.34884 5.85015V7.0255C6.34884 7.14038 6.48559 7.44085 6.64187 7.58225L8.81024 9.65015C9.14233 10.0302 9.46466 10.6399 9.46466 11.1878V13.9097C9.46466 14.0864 9.59163 14.1836 9.66977 14.219C9.77722 14.272 9.95303 14.3074 10.1093 14.219L10.8907 13.7595C10.9688 13.7064 11.0665 13.5297 11.0665 13.4413V11.232C11.0665 10.6046 11.4084 9.90643 11.8968 9.54411L14.3191 7.59992C14.4461 7.48504 14.6414 7.13155 14.6414 6.91062V5.79713C14.6414 5.60271 14.4558 5.4348 14.2409 5.4348H6.74931Z" fill="#292D32"/>
@@ -73,22 +72,25 @@
             <!-- contianer -->
             <div>
                 <!-- each one -->
-                <div class="w-[373px] h-[138px] shadow-lg shadow-indigo-200  rounded-xl">
-                    <div class="w-[333px] h-[105px] border-b-[1px] border-slate-600 border-dashed mx-auto px-1">
-                        <div class="flex justify-between  pt-5">
+                <div class="shadow-lg shadow-indigo-200 rounded-xl px-4 py-2">
+                    <div class="border-b-[1px] border-slate-600 border-dashed px-2 py-1">
+                        <div class="flex justify-between pt-2 gap-[7rem]">
                             <div>
                                 <div class="flex justify-center items-center gap-3">
                                     <p class="text-[15px] font-[800] text-black">12:00</p>
                                     <p class="text-[15px] font-[800] text-black">12:00</p>
                                 </div>
-                                <div class="flex justify-around items-center gap-3">
+                                <div class="flex justify-between items-center gap-3">
                                     <p class="text-[9px] font-[600] text-slate-600">6h 10m </p>
                                     <p class="text-[9px] font-[600] text-slate-600">6h 10m </p>
                                 </div>
                             </div>
-                            <div class="w-[88px] h-[18px] bg-indigo-300 rounded-md flex justify-center items-center">
-                                <p class="text-[8px] font-[700] text-indigo-900">CHEAPEST</p>
+                            <div class="flex justify-center items-center">
+                                <div class=" bg-indigo-300 rounded-md flex justify-center items-center py-1 px-3">
+                                    <p class="text-[9px] font-[700] text-indigo-900">CHEAPEST</p>
+                                </div>
                             </div>
+                           
                         </div>
                         <!-- bus details -->
                         <div class="pt-2">
@@ -97,8 +99,8 @@
                         </div>
                     </div>
                     <!-- second div -->
-                    <div class="w-[333px] h-[30px] flex justify-between items-center mx-auto">
-                        <div class="w-[36px] h-[17px] bg-blue-800 rounded-md flex justify-center items-center">
+                    <div class="flex justify-between items-center ">
+                        <div class="w-[36px] h-[17px] bg-blue-800 rounded-md flex justify-center items-center ">
                             <svg width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M5.49999 0L6.79837 3.81966H11L7.6008 6.18034L8.8046 10L5.49999 7.63932L2.10081 10L3.39918 6.18034L0 3.81966H4.20162L5.49999 0Z" fill="#FFE600"/>
                             </svg>
