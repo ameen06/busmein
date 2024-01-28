@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
-//import HomePage from '../views/HomePage.vue'
 
 const routes = [
   {
@@ -8,23 +7,33 @@ const routes = [
     component: () => import('@/views/HomePage.vue'),
   },
   {
-    path: '/login',
-    name: 'login',
-    component: () => import('@/views/LoginPage.vue'),
-  },
-  {
-    path: '/register',
-    name: 'register',
-    component: () => import('@/views/RegisterPage.vue'),
-  },
-  {
-    path: '/verify-otp',
-    name: 'verify-otp',
-    component: () => import('@/views/VerifyPage.vue'),
+    path: '/auth',
+    component: () => import('@/views/AuthMaster.vue'),
+    children: [
+        {
+          path: '',
+          redirect: { name: 'login' }
+        },
+        {
+            path: 'login',
+            name: 'login',
+            component: () => import('@/views/auth/LoginPage.vue'),
+        },
+        {
+            path: 'register',
+            name: 'register',
+            component: () => import('@/views/auth/RegisterPage.vue'),
+        },
+        {
+          path: 'verify-otp',
+          name: 'verify-otp',
+          component: () => import('@/views/auth/VerifyPage.vue'),
+        },
+    ]
   },
   {
     path: '/booking',
-    name: 'booking Page',
+    name: 'bookings',
     component: () => import('@/views/BookingPage.vue'),
   },
   {

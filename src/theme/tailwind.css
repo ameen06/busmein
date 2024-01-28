@@ -9,3 +9,10 @@
       font-family: 'Outfit', system-ui, sans-serif;
     }
 }
+
+.router-link-active {
+  @apply bg-white stroke-blue-800;
+}
+.router-link-active > .nav-link-text {
+  @apply block;
+}
