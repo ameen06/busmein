@@ -26,17 +26,17 @@
                             </div>
                     </div>
                 </div>
-                <button class="flex flex-col items-center">
+                <button class="flex flex-col items-center gap-1">
                     <div class="bg-blue-700 rounded-full flex justify-center items-center px-3 py-2">
                         <p class="text-[11px] font-[700] text-white">15 Jan</p>
                     </div>
                     <p class="text-[10px] font-[600] text-slate-600">Mon</p>
                 </button>
             </div>
-            <div class="flex justify-center items-center gap-4 py-2">
+            <div class="flex justify-center items-center gap-4 pt-3">
                 <!-- another -->
                 <button>
-                    <div class="bg-white  rounded-lg shadow-lg flex justify-center items-center gap-1 px-2 py-1 border-[1px] border-slate-600">
+                    <div class="bg-white  rounded-lg shadow-lg flex justify-center items-center gap-1 px-2 py-1 border-[1px] border-gray-300">
                     <svg width="23" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9.89443 15.5976C9.5721 15.5976 9.24977 15.5269 8.95675 15.3767C8.36094 15.0762 7.99954 14.5283 7.99954 13.9097V11.1878C7.99954 11.0199 7.85303 10.6929 7.70652 10.525L5.58698 8.51015C5.18652 8.14783 4.88373 7.51155 4.88373 7.0255V5.85015C4.88373 4.86922 5.70419 4.10922 6.74931 4.10922H14.2409C15.2665 4.10922 16.1065 4.86922 16.1065 5.79713V6.92829C16.1065 7.5469 15.7158 8.22736 15.3251 8.58085L12.854 10.5604C12.6977 10.6841 12.5316 10.9934 12.5316 11.2497V13.459C12.5316 14.0157 12.1605 14.6343 11.6623 14.8995L10.8907 15.3502C10.5879 15.5181 10.2461 15.5976 9.89443 15.5976ZM6.74931 5.4348C6.51489 5.4348 6.34884 5.61155 6.34884 5.85015V7.0255C6.34884 7.14038 6.48559 7.44085 6.64187 7.58225L8.81024 9.65015C9.14233 10.0302 9.46466 10.6399 9.46466 11.1878V13.9097C9.46466 14.0864 9.59163 14.1836 9.66977 14.219C9.77722 14.272 9.95303 14.3074 10.1093 14.219L10.8907 13.7595C10.9688 13.7064 11.0665 13.5297 11.0665 13.4413V11.232C11.0665 10.6046 11.4084 9.90643 11.8968 9.54411L14.3191 7.59992C14.4461 7.48504 14.6414 7.13155 14.6414 6.91062V5.79713C14.6414 5.60271 14.4558 5.4348 14.2409 5.4348H6.74931Z" fill="#292D32"/>
                         <path d="M13.4302 19H7.56977C2.26605 19 0 16.9498 0 12.1512V6.84884C0 2.05023 2.26605 0 7.56977 0H13.4302C18.734 0 21 2.05023 21 6.84884V12.1512C21 16.9498 18.734 19 13.4302 19ZM7.56977 1.32558C3.06698 1.32558 1.46512 2.77488 1.46512 6.84884V12.1512C1.46512 16.2251 3.06698 17.6744 7.56977 17.6744H13.4302C17.933 17.6744 19.5349 16.2251 19.5349 12.1512V6.84884C19.5349 2.77488 17.933 1.32558 13.4302 1.32558H7.56977Z" fill="#292D32"/>
@@ -47,8 +47,8 @@
                 </button>
                 <!-- another -->
                 <button>
-                    <div class="bg-white  rounded-lg shadow-lg flex justify-center items-center gap-1 px-2 py-1 border-[1px] border-slate-600">
-                        <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class="bg-white  rounded-lg shadow-lg flex justify-center items-center gap-1 px-2 py-1 border-[1px] border-gray-300">
+                        <svg width="17" height="12" viewBox="0 0 17 12" class="m-[0.18rem]">
                             <path d="M1 1H16M4 6H13M7.75 11H9.25" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     <!-- text -->
@@ -57,7 +57,7 @@
                 </button>
                  <!-- another -->
                  <button>
-                    <div class="bg-white  rounded-lg shadow-lg flex justify-center items-center gap-1 px-2 py-1 border-[1px] border-slate-600">
+                    <div class="bg-white  rounded-lg shadow-lg flex justify-center items-center gap-1 px-2 py-1 border-[1px] border-gray-300">
                     <svg width="23" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9.89443 15.5976C9.5721 15.5976 9.24977 15.5269 8.95675 15.3767C8.36094 15.0762 7.99954 14.5283 7.99954 13.9097V11.1878C7.99954 11.0199 7.85303 10.6929 7.70652 10.525L5.58698 8.51015C5.18652 8.14783 4.88373 7.51155 4.88373 7.0255V5.85015C4.88373 4.86922 5.70419 4.10922 6.74931 4.10922H14.2409C15.2665 4.10922 16.1065 4.86922 16.1065 5.79713V6.92829C16.1065 7.5469 15.7158 8.22736 15.3251 8.58085L12.854 10.5604C12.6977 10.6841 12.5316 10.9934 12.5316 11.2497V13.459C12.5316 14.0157 12.1605 14.6343 11.6623 14.8995L10.8907 15.3502C10.5879 15.5181 10.2461 15.5976 9.89443 15.5976ZM6.74931 5.4348C6.51489 5.4348 6.34884 5.61155 6.34884 5.85015V7.0255C6.34884 7.14038 6.48559 7.44085 6.64187 7.58225L8.81024 9.65015C9.14233 10.0302 9.46466 10.6399 9.46466 11.1878V13.9097C9.46466 14.0864 9.59163 14.1836 9.66977 14.219C9.77722 14.272 9.95303 14.3074 10.1093 14.219L10.8907 13.7595C10.9688 13.7064 11.0665 13.5297 11.0665 13.4413V11.232C11.0665 10.6046 11.4084 9.90643 11.8968 9.54411L14.3191 7.59992C14.4461 7.48504 14.6414 7.13155 14.6414 6.91062V5.79713C14.6414 5.60271 14.4558 5.4348 14.2409 5.4348H6.74931Z" fill="#292D32"/>
                         <path d="M13.4302 19H7.56977C2.26605 19 0 16.9498 0 12.1512V6.84884C0 2.05023 2.26605 0 7.56977 0H13.4302C18.734 0 21 2.05023 21 6.84884V12.1512C21 16.9498 18.734 19 13.4302 19ZM7.56977 1.32558C3.06698 1.32558 1.46512 2.77488 1.46512 6.84884V12.1512C1.46512 16.2251 3.06698 17.6744 7.56977 17.6744H13.4302C17.933 17.6744 19.5349 16.2251 19.5349 12.1512V6.84884C19.5349 2.77488 17.933 1.32558 13.4302 1.32558H7.56977Z" fill="#292D32"/>
@@ -68,22 +68,20 @@
                 </button>
                 <!-- another -->
                 <button>
-                    <div class="bg-white  rounded-lg shadow-lg flex justify-center items-center gap-1 px-2 py-1 border-[1px] border-slate-600">
-                        <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class="bg-white  rounded-lg shadow-lg flex justify-center items-center gap-1 px-2 py-1 border-[1px] border-gray-300">
+                        <svg width="17" height="12" viewBox="0 0 17 12" class="m-[0.18rem]">
                             <path d="M1 1H16M4 6H13M7.75 11H9.25" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     <!-- text -->
                     <p class="text-[15px] font-[500] text-black">Sort</p>
                 </div>
                 </button>
-            </div>
-                                
-                              
+            </div>                
             <!-- contianer -->
             <div class="w-full sm:px-10 px-4">
                 <!-- each one -->
                 <a href="">
-                    <div class="shadow-lg bg-white rounded-xl px-4 py-2 mt-6">
+                    <div class="shadow-lg bg-white rounded-xl px-4 py-2 mt-3">
                         <div class=" border-b-[1px] border-slate-600 border-dashed px-2 py-1">
                             <div class="flex justify-between ">
                                 <div class="">
@@ -123,7 +121,7 @@
                     </div>
                 </a>
                 <a href="">
-                    <div class="bg-white  shadow-lg rounded-xl px-4 py-2 mt-6">
+                    <div class="bg-white  shadow-lg rounded-xl px-4 py-2 mt-3">
                         <div class="border-b-[1px] border-slate-600 border-dashed px-2 py-1">
                             <div class="flex justify-between ">
                                 <div class="">
@@ -163,7 +161,7 @@
                     </div>
                 </a>
                 <a href="">
-                    <div class="bg-white  shadow-lg  rounded-xl px-4 py-2 mt-6">
+                    <div class="bg-white  shadow-lg  rounded-xl px-4 py-2 mt-3">
                         <div class="border-b-[1px] border-slate-600 border-dashed px-2 py-1">
                             <div class="flex justify-between ">
                                 <div class="">
