@@ -1,6 +1,6 @@
 <template>
-    <ion-page >
-      <ion-content :fullscreen="true">
+  <ion-page>
+    <ion-content :fullscreen="true">
         <div class="flex flex-col justify-center items-center">
           <!-- header -->
           <div class="w-full border-b-[1px] border-slate-500 flex items-end gap-2 pb-2 px-3 pt-10">
@@ -68,56 +68,20 @@
                     <p class="text-[10px]  font-[500] text-slate-500 mx-2">$120</p>
                 </div>
             </div>
-          </div> 
-            <!-- nav floating bar -->
-          <div class="absolute top-[85%]  rounded-full bg-blue-800 z-10 shadow-md px-4 py-2 ">
-            <div class="h-full flex justify-between items-center gap-5 px-2">
-              <!-- Home -->
-              <div class="flex justify-center items-center ">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  style="fill: rgb(252, 252, 252); transform: ; msfilter: "
-                >
-                  <path
-                    d="M5 22h14a2 2 0 0 0 2-2v-9a1 1 0 0 0-.29-.71l-8-8a1 1 0 0 0-1.41 0l-8 8A1 1 0 0 0 3 11v9a2 2 0 0 0 2 2zm5-2v-5h4v5zm-5-8.59 7-7 7 7V20h-3v-5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v5H5z"
-                  ></path>
-                </svg>
-              </div>
-                <!-- ticket -->
-                <div class=" rounded-full bg-white flex justify-center items-center gap-1 px-4 py-2">
-                  <div class="w-[24px] h-[24px]"> 
-                    <svg width="22" height="24" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M14.5405 4.76068H9.61714C9.18105 4.76068 8.82745 5.11424 8.82745 5.55037C8.82745 5.9865 9.18101 6.34006 9.61714 6.34006H14.5405C14.9766 6.34006 15.3301 5.9865 15.3301 5.55037C15.3301 5.11424 14.9766 4.76068 14.5405 4.76068Z" fill="#0223B9"/>
-                    <path d="M19.2347 5.21511C19.6611 5.20195 20 4.85246 20 4.42582V1.4048C20 0.968706 19.6464 0.615112 19.2103 0.615112H0.789688C0.353555 0.615151 0 0.968706 0 1.4048V4.42382C0 4.85992 0.353555 5.21351 0.789688 5.21351C1.77477 5.21351 2.57617 6.01492 2.57617 7C2.57617 7.98507 1.77477 8.78648 0.789688 8.78648C0.353555 8.78648 0 9.14007 0 9.57617V12.5952C0 13.0313 0.353555 13.3849 0.789688 13.3849H19.2104C19.6464 13.3849 20 13.0313 20 12.5952V9.57417C20 9.14753 19.6612 8.79804 19.2347 8.78488C18.2646 8.75492 17.5046 7.97093 17.5046 7C17.5046 6.02906 18.2646 5.24507 19.2347 5.21511ZM6.35723 11.8055H1.57934V10.2723C3.05559 9.91605 4.15551 8.5841 4.15551 7C4.15551 5.41593 3.05559 4.0839 1.57934 3.72765V2.19449H6.35723V11.8055ZM16.8769 9.34472C17.3065 9.78671 17.8385 10.0967 18.4207 10.2516V11.8055H7.93656V2.19449H18.4207V3.74832C17.8385 3.90324 17.3064 4.21328 16.8769 4.65523C16.2632 5.28664 15.9253 6.11937 15.9253 7.00003C15.9252 7.88062 16.2632 8.71332 16.8769 9.34472Z" fill="#0223B9"/>
-                    <path d="M14.5405 7.65997H9.61714C9.18105 7.65997 8.82745 8.01353 8.82745 8.44966C8.82745 8.88579 9.18101 9.23935 9.61714 9.23935H14.5405C14.9766 9.23935 15.3301 8.88579 15.3301 8.44966C15.3301 8.01353 14.9766 7.65997 14.5405 7.65997Z" fill="#0223B9"/>
-                    </svg>
-                  </div>
-                  <p class="text-[12px] font-[600] text-blue-900">Bookings</p>
-                </div>
-                <!-- user -->
-                <div class="w-[20px] h-[20px] text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    style="
-                      fill: rgba(255, 255, 255, 1);
-                      transform: ;
-                      msfilter: ;
-                    "
-                  >
-                    <path
-                      d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z"
-                    ></path>
-                  </svg>
-                </div>
-              </div>
           </div>
         </div>
     </ion-content>
+
+    <!-- nav floating bar -->
+    <NavigationBar />
   </ion-page>
 </template>
+
+<script setup>
+import {
+  IonContent,
+  IonPage,
+  IonFooter,
+} from "@ionic/vue";
+import NavigationBar from '@/components/NavigationBar.vue'
+</script>
