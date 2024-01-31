@@ -56,6 +56,11 @@ const routes = [
     name: 'seat-selects',
     component: () => import('@/views/SelectSeatPage.vue'),
   },
+  {
+    path: '/bus-details',
+    name: 'bus-details',
+    component: () => import('@/views/BusDetailsPage.vue'),
+  },
 ]
 
 const router = createRouter({
