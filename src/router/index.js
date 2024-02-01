@@ -33,7 +33,32 @@ const routes = [
   },
   {
     path: '/booking',
-    name: 'bookings',
+    component: () => import('@/views/BookingMaster.vue'),
+    children: [
+        {
+          path: '',
+          redirect: { name: 'active' }
+        },
+        {
+            path: 'active',
+            name: 'active',
+            component: () => import('@/views/booking/ActiveBookingPage.vue'),
+        },
+        {
+            path: 'completed',
+            name: 'completed',
+            component: () => import('@/views/booking/CompletedBookingPage.vue'),
+        },
+        {
+          path: 'cancelled',
+          name: 'cancelled',
+          component: () => import('@/views/booking/CancelledBookingPage.vue'),
+        },
+    ]
+  },
+  {
+    path: '/anything',
+    name: 'select-page',
     component: () => import('@/views/BookingPage.vue'),
   },
   {
