@@ -72,8 +72,7 @@
         </div>
     </ion-content>
 
-    <!-- nav floating bar -->
-    <!-- <NavigationBar /> -->
+    <NavigationBar />
   </ion-page>
 </template>
 
@@ -82,5 +81,5 @@ import {
   IonContent,
   IonPage,
 } from "@ionic/vue";
-// import NavigationBar from '@/components/NavigationBar.vue'
+import NavigationBar from '@/components/NavigationBar.vue'
 </script>
