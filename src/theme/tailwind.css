@@ -16,3 +16,6 @@
 .router-link-active > .nav-link-text {
   @apply block;
 }
+.router-link-active > .booking-nav-bg{
+  @apply bg-blue-800 text-white;
+}
