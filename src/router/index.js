@@ -54,6 +54,11 @@ const routes = [
           name: 'cancelled',
           component: () => import('@/views/booking/CancelledBookingPage.vue'),
         },
+        {
+          path: 'success',
+          name: 'success',
+          component: () => import('@/views/booking/BookingSuccessPage.vue'),
+        },
     ]
   },
   {
