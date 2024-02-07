@@ -61,6 +61,15 @@
                 </div>
             </div>
           </div>
+          <!-- no active booking page -->
+          <div class="flex flex-col justify-center items-center">
+            <p class="text-2xl text-blue-800 font-[600]">No Active Booking Found</p>
+            <p class="max-w-xs text-sm text-gray-500 font-[400] px-3">We Can’t Found any Booking Made by you . But </p>
+            <p class="max-w-xs text-sm text-gray-500 font-[400] px-7 mb-7">you can still Make Booking </p>
+            <div class="px-5 py-1 border-gray-300 border-[2px] rounded-lg">
+              <a href="/" class="text-md font-[600]">Book Ticket</a>
+            </div>
+          </div>
         </div>
     </ion-content>
 
