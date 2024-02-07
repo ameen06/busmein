@@ -57,8 +57,8 @@
 
 
           <!-- create new account -->
-          <div class=" rounded-lg  shadow-2xl mt-5 px-6 py-3">
-            <h1 class="text-[20px] font-[800] ">Create New Account</h1>
+          <div class=" rounded-lg  shadow-2xl mt-5 px-6 py-2">
+            <h1 class="text-xl font-[800]">Create New Account</h1>
             <div class="flex flex-col justify-center items-center">
               <div class="rounded-lg border-[1px] border-gray-500  flex justify-start items-center gap-2 px-3 py-2">
                 <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -68,8 +68,8 @@
               </div>
               <!-- resend sec -->
               <div class="flex justify-center pt-1">
-                <a href="" class="text-[10px] font-[500] text-blue-800">Resend Again</a>
-                <p class="text-[10px] font-[500]">,  45sec</p>
+                <a href="" class="text-xs font-[500] text-blue-800">Resend Again</a>
+                <p class="text-xs font-[500]">,  45sec</p>
               </div>
               <!-- otp number -->
               <form class="max-w-sm mx-auto mt-2">
@@ -116,7 +116,7 @@
 
           <!-- passenger info -->
           <div class="rounded-lg bg-white shadow-2xl mt-5 px-6 py-4">
-            <p class="text-[20px] font-[800] px-2 ">Passenger Details</p>
+            <p class="text-xl font-[800] px-2 ">Passenger Details</p>
 
             <div class="rounded-lg border-[1px] border-gray-500 mt-2 flex justify-start items-center gap-2 px-3 py-2">
               <svg width="16" height="18" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -147,7 +147,7 @@
           </div>
 
           <!-- paynow button -->
-          <button class="bg-blue-900 rounded-lg flex justify-center items-center my-10  px-[7rem] py-3"> 
+          <button class="fixed top-[85%] bg-blue-900 rounded-lg flex justify-center items-center px-[7rem] py-3"> 
             <p class="text-[17px] font-[800] text-white">Pay Now</p>
           </button>
 
