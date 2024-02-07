@@ -9,16 +9,8 @@
             <p class="text-[20px] font-extrabold text-black ">Booking</p>
           </div>
           <!-- nav bar -->
-          <div class="flex justify-center items-center gap-7  pt-3">
-            <div class=" flex justify-center items-center bg-blue-800 rounded-full px-4 py-2">
-                <p class="text-[10px] font-extrabold text-center text-white">ACTIVE</p>
-            </div>
-            <div class=" flex justify-center items-center bg-white rounded-full px-4 py-2">
-                <p class="text-[10px] font-extrabold text-center text-blue-800">COMPLETED</p>
-            </div>
-            <div class=" flex justify-center items-center bg-white rounded-full px-4 py-2">
-                <p class="text-[10px] font-extrabold text-center text-blue-800">CANCELLED</p>
-            </div>
+          <div class="flex justify-center items-center">
+            <BookingNavBar />
           </div>
           <!-- ticket container -->
           <div class="sticky w-full pt-3">
@@ -69,6 +61,15 @@
                 </div>
             </div>
           </div>
+          <!-- no active booking page -->
+          <div class="flex flex-col justify-center items-center">
+            <p class="text-2xl text-blue-800 font-[600]">No Active Booking Found</p>
+            <p class="max-w-xs text-sm text-gray-500 font-[400] px-3">We Can’t Found any Booking Made by you . But </p>
+            <p class="max-w-xs text-sm text-gray-500 font-[400] px-7 mb-7">you can still Make Booking </p>
+            <div class="px-5 py-1 border-gray-300 border-[2px] rounded-lg">
+              <a href="/" class="text-md font-[600]">Book Ticket</a>
+            </div>
+          </div>
         </div>
     </ion-content>
 
@@ -82,4 +83,5 @@ import {
   IonPage,
 } from "@ionic/vue";
 import NavigationBar from '@/components/NavigationBar.vue'
+import BookingNavBar from '@/components/BookingNavBar.vue'
 </script>

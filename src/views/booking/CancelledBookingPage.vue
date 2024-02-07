@@ -9,22 +9,8 @@
             <p class="text-[20px] font-extrabold text-black ">Booking</p>
           </div>
           <!-- nav bar -->
-          <div class="flex justify-center items-center gap-7  pt-3">
-            <a href="booking/active">
-              <div class=" flex justify-center items-center bg-blue-800 rounded-full px-4 py-2">
-                <p class="text-[10px] font-extrabold text-center text-white">ACTIVE</p>
-            </div>
-            </a>
-            <a href="booking/completed">
-              <div class=" flex justify-center items-center bg-white rounded-full px-4 py-2">
-                <p class="text-[10px] font-extrabold text-center text-blue-800">COMPLETED</p>
-            </div>
-            </a>
-            <a href="booking/cancelled">
-              <div class=" flex justify-center items-center bg-white rounded-full px-4 py-2">
-                <p class="text-[10px] font-extrabold text-center text-blue-800">CANCELLED</p>
-            </div>
-            </a>
+          <div class="flex justify-center items-center">
+            <BookingNavBar/>
           </div>
           <!-- ticket container -->
           <div class="sticky w-full pt-3">
@@ -79,7 +65,7 @@
     </ion-content>
 
     <!-- nav floating bar -->
-    <!-- <NavigationBar /> -->
+     <NavigationBar /> 
   </ion-page>
 </template>
 
@@ -88,5 +74,6 @@ import {
   IonContent,
   IonPage,
 } from "@ionic/vue";
-// import NavigationBar from '/@/components/NavigationBar.vue'
+import NavigationBar from '@/components/NavigationBar.vue'
+import BookingNavBar from '@/components/BookingNavBar.vue'
 </script>

@@ -73,7 +73,7 @@
     </ion-content>
 
     <!-- nav floating bar -->
-   
+   <NavigationBar/>
   </ion-page>
 </template>
 
