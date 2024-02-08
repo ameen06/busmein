@@ -146,14 +146,11 @@
                   </div>
                 </div>
               </div>
-              <button class="w-full fixed bottom-8 bg-blue-900 rounded-lg flex justify-center items-center py-3"> 
-              <p class="text-[17px] font-[800] text-white">Pay Now</p>
-            </button>
           </div>
           <!-- paynow button -->
-          
-           
-          
+          <button class="w-[95%]  fixed bottom-8 bg-blue-900 rounded-lg flex justify-center items-center py-3 "> 
+            <p class="text-lg font-[800] text-white">Pay Now</p>
+          </button>
         </div>
     </ion-content>
   </ion-page>
