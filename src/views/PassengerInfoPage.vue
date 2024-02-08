@@ -148,7 +148,7 @@
               </div>
           </div>
           <!-- paynow button -->
-          <button class="w-[95%]  fixed bottom-8 bg-blue-900 rounded-lg flex justify-center items-center py-3 "> 
+          <button class="w-11/12  fixed bottom-8 bg-blue-900 rounded-lg flex justify-center items-center py-3 "> 
             <p class="text-lg font-[800] text-white">Pay Now</p>
           </button>
         </div>
