@@ -3,11 +3,13 @@
       <ion-content :fullscreen="true">
         <div class="flex flex-col justify-center items-center">
           <!-- header -->
-          <div class="w-full border-b-[1px] border-slate-500 flex items-end pb-2 pt-3">
+          <ion-header class="w-full border-b-[1px] border-slate-500 flex items-end pb-2 ">
             <div class="pl-3 pb-2">
-              <svg width="14" height="24" viewBox="0 0 14 24" fill="none" >
+              <a href="/">
+                <svg width="14" height="24" viewBox="0 0 14 24" fill="none" >
               <path d="M0.939337 10.9393C0.35355 11.5251 0.35355 12.4749 0.939337 13.0607L10.4853 22.6066C11.0711 23.1924 12.0208 23.1924 12.6066 22.6066C13.1924 22.0208 13.1924 21.0711 12.6066 20.4853L4.12132 12L12.6066 3.51472C13.1924 2.92893 13.1924 1.97919 12.6066 1.3934C12.0208 0.807611 11.0711 0.807611 10.4853 1.3934L0.939337 10.9393ZM3.3421 10.5L2 10.5V13.5L3.3421 13.5V10.5Z" fill="black"/>
               </svg>
+              </a>
             </div>
             <div class="pl-4">
               <p class="text-xl font-[800] text-black">Passenger Information</p>
@@ -24,12 +26,12 @@
                 <p class="font-[500] text-sm text-slate-600">Pune</p>
               </div>
             </div>
-          </div>
+          </ion-header>
           
           <!-- traveling bus details -->
           <div class="w-full flex flex-col shadow-lg py-4">
             <p class="text-sm font-[600] text-slate-600 mx-auto">Chartered Bus - HGS</p>
-            <div class="flex justify-between gap-1 pt-2 sm:px-8 px-5">
+            <div class="flex justify-between gap-1 pt-2 sm:px-8 px-3">
               <!-- from -->
               <div>
                 <p class="sm:text-xl text-sm font-[700] text-black">Wed, 17 Jan - 12:00</p>
@@ -55,7 +57,7 @@
             </div>
           </div>
 
-          <div class="w-full px-5">
+          <div class="w-full px-3">
           <!-- create new account -->
             <div class=" rounded-lg  shadow-2xl mt-5 px-6 py-2">
             <h1 class="text-xl font-[800]">Create New Account</h1>
@@ -109,13 +111,9 @@
                document.getElementById(nextId).focus();
            }
        } -->
-             
             </div>
             </div>
-
-
           <!-- passenger info -->
-          
             <div class="rounded-lg bg-white shadow-2xl mt-5 px-4 py-4">
               <p class="text-xl font-[800] px-2 ">Passenger Details</p>
 
@@ -137,15 +135,15 @@
                 </svg>
                 <input type="text" placeholder="E-mail Address" class="w-full px-2">  
               </div>
-                <div class="w-full flex justify-center items-center gap-4">
-                  <div class="max-w-[8rem] rounded-lg border-[1px] border-gray-500 mt-2 flex justify-center items-center px-4 py-2">
-                    <input type="number" placeholder="Age" class="w-full">  
-                  </div>
-                  <div class="max-w-[8rem] rounded-lg border-[1px] border-gray-500 mt-2 flex justify-center items-center px-4 py-2">
-                    <input type="text" placeholder="Gender" class="w-full">  
-                  </div>
+              <div class="w-full flex justify-center items-center gap-4">
+                <div class="max-w-[8rem] rounded-lg border-[1px] border-gray-500 mt-2 flex justify-center items-center px-4 py-2">
+                  <input type="number" placeholder="Age" class="w-full">  
+                </div>
+                <div class="max-w-[8rem] rounded-lg border-[1px] border-gray-500 mt-2 flex justify-center items-center px-4 py-2">
+                  <input type="text" placeholder="Gender" class="w-full">  
                 </div>
               </div>
+            </div>
           </div>
           <!-- paynow button -->
           <button class="w-11/12  fixed bottom-8 bg-blue-900 rounded-lg flex justify-center items-center py-3 "> 
