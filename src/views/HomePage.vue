@@ -2,7 +2,7 @@
   <ion-page>
     <ion-content :fullscreen="true">
       <!-- menu bar -->
-      <div class="absolute z-10 top-[47px] left-[19px]">
+      <div class="absolute z-10 top-8 left-8">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="36"
@@ -14,13 +14,13 @@
         </svg>
       </div>
       <!-- menu ends -->
-      <div className="flex justify-center">
-        <div className="absolute top-[-175px] w-[550px] h-[550px] rounded-full bg-blue-800 shadow-2xl"></div>
-        <div className="flex justify-center">
+      <div class="flex justify-center">
+        <div class="absolute top-[-175px] w-[550px] h-[550px] rounded-full bg-blue-800 shadow-2xl"></div>
+        <div class="flex justify-center">
           <p class="absolute top-[67px] text-[20px] font-[800] text-white z-10">
             Book Your Bus Ticket
           </p>
-          <div className="absolute top-[115px] h-[313px]  rounded-2xl bg-white shadow-xl flex flex-col items-center gap-4 p-5 pt-7">
+          <div class="w-10/12 md:w-fit absolute top-[115px] h-[313px]  rounded-2xl bg-white shadow-xl flex flex-col items-center gap-4 p-5 pt-7">
             <!-- pickup point -->
             <div className=" w-[258px] h-[48px] rounded-md  bg-slate-200">
               <div class="h-full flex justify-center items-center gap-2">
@@ -59,7 +59,7 @@
               </div>
             </div>
             <!-- dropping -->
-            <div className="] w-[258px] h-[48px] rounded-md  bg-slate-200">
+            <div className="w-[258px] h-[48px] rounded-md  bg-slate-200">
               <div class="h-full flex justify-center items-center gap-2">
                 <div class="flex justify-center border-r-2 border-slate-300">
                   <svg

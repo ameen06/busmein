@@ -26,7 +26,7 @@
                       <path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z"></path>
                     </svg>
                   </div>
-                  <input type="text" id="input-group-1" class="w-full bg-white border-2 border-blue-800 text-gray-900 text-sm rounded-lg focus:ring-blue-200 block ps-10 p-2.5 focus:outline-none focus:ring-4 placeholder-blue-800" placeholder="Enter Full Name">
+                  <input type="text" v-model="name" class="w-full bg-white border-2 border-blue-800 text-gray-900 text-sm rounded-lg focus:ring-blue-200 block ps-10 p-2.5 focus:outline-none focus:ring-4 placeholder-blue-800" placeholder="Enter Full Name" required>
                 </div>
 
                 <!-- email -->
@@ -36,7 +36,7 @@
                       <path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path>
                     </svg>
                   </div>
-                  <input type="email" id="input-group-1" class="w-full bg-white border-2 border-blue-800 text-gray-900 text-sm rounded-lg focus:ring-blue-200 block ps-10 p-2.5 focus:outline-none focus:ring-4 placeholder-blue-800" placeholder="Enter Email">
+                  <input type="email" v-model="email" class="w-full bg-white border-2 border-blue-800 text-gray-900 text-sm rounded-lg focus:ring-blue-200 block ps-10 p-2.5 focus:outline-none focus:ring-4 placeholder-blue-800" placeholder="Enter Email">
                 </div>
 
                 <!-- phone -->
@@ -46,11 +46,11 @@
                       <path d="M17.707 12.293a.999.999 0 0 0-1.414 0l-1.594 1.594c-.739-.22-2.118-.72-2.992-1.594s-1.374-2.253-1.594-2.992l1.594-1.594a.999.999 0 0 0 0-1.414l-4-4a.999.999 0 0 0-1.414 0L3.581 5.005c-.38.38-.594.902-.586 1.435.023 1.424.4 6.37 4.298 10.268s8.844 4.274 10.269 4.298h.028c.528 0 1.027-.208 1.405-.586l2.712-2.712a.999.999 0 0 0 0-1.414l-4-4.001zm-.127 6.712c-1.248-.021-5.518-.356-8.873-3.712-3.366-3.366-3.692-7.651-3.712-8.874L7 4.414 9.586 7 8.293 8.293a1 1 0 0 0-.272.912c.024.115.611 2.842 2.271 4.502s4.387 2.247 4.502 2.271a.991.991 0 0 0 .912-.271L17 14.414 19.586 17l-2.006 2.005z"></path>
                     </svg>
                   </div>
-                  <input type="text" id="input-group-1" class="w-full bg-white border-2 border-blue-800 text-gray-900 text-sm rounded-lg focus:ring-blue-200 block ps-10 p-2.5 focus:outline-none focus:ring-4 placeholder-blue-800" placeholder="Enter Phone">
+                  <input type="text" v-model="phone" class="w-full bg-white border-2 border-blue-800 text-gray-900 text-sm rounded-lg focus:ring-blue-200 block ps-10 p-2.5 focus:outline-none focus:ring-4 placeholder-blue-800" placeholder="Enter Phone" required>
                 </div>
 
-                <button type="button" v-on:click.prevent="register" class="w-full text-white bg-blue-800 disabled:bg-blue-600 font-semibold rounded-lg px-5 py-4 focus:outline-none uppercase inline-flex items-center justify-center gap-2" :disabled="loading">
-                  <svg v-if="loading" aria-hidden="true" role="status" class="inline w-4 h-4 text-white animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button type="button" v-on:click.prevent="register" class="w-full text-white bg-blue-800 disabled:bg-blue-600 font-semibold rounded-lg px-5 py-4 focus:outline-none uppercase inline-flex items-center justify-center gap-2" :disabled="isLoading">
+                  <svg v-if="isLoading" aria-hidden="true" role="status" class="inline w-4 h-4 text-white animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" class="fill-blue-500"/>
                     <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentColor"/>
                   </svg>
@@ -97,18 +97,56 @@
           </div>
         </div>
       </section>
+      <ion-toast :is-open="isOpen" :message="errorMessage" :duration="5000" @didDismiss="initToast(false)"></ion-toast>
     </ion-content>
   </ion-page>
 </template>
 
 <script setup>
-import { IonContent, IonPage } from "@ionic/vue";
-import { ref } from "vue";
+import { IonContent, IonPage, IonToast } from "@ionic/vue";
+import { ref } from "vue"
+import axios from '@/axios'
+import { useStore } from 'vuex'
+import { useRouter } from "vue-router"
+import IonicPreference from '@/store/IonicPreference'
+
+const router = useRouter()
+const store = useStore()
+
+var name = ref(null)
+var email = ref(null)
+var phone = ref(null)
+var isLoading = ref(false)
+var errorMessage = ref('')
+var isOpen = ref(false)
 
 
-var loading = ref(false);
+// ##### functions #####
+const setUserState = (user) => store.dispatch('auth/registerUser', user)
 
-function register(){
-  loading.value = true;
+function initToast(state, message){
+  errorMessage.value = message
+  isOpen.value = state
+}
+
+async function register(){
+  isLoading.value = true;
+  axios.defaults.withCredentials = false;
+  await axios.post('auth/register', {'name': name.value, 'email': email.value, 'phone': phone.value})
+  .then((response) => {
+    if(response.status == 200){
+      setUserState({phone: phone.value})
+      IonicPreference.setNewPreference('user_mob_number', phone.value);
+      router.push({name: 'verify-otp'});
+      isLoading.value = false;
+    }else{
+      isLoading.value = false;
+      initToast(true, response.data.message);
+    }
+  })
+  .catch(function(error){
+    isLoading.value = false;
+    initToast(true, error.response.data.message);
+  });
 }
 </script>

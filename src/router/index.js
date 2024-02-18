@@ -1,10 +1,12 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
+import middlewares from "@/router/middleware"
 
 const routes = [
   {
     path: '/',
     name: 'home',
     component: () => import('@/views/HomePage.vue'),
+    beforeEnter: [middlewares.checkForRoutes],
   },
   {
     path: '/auth',
@@ -29,7 +31,8 @@ const routes = [
           name: 'verify-otp',
           component: () => import('@/views/auth/VerifyPage.vue'),
         },
-    ]
+    ],
+    beforeEnter: [middlewares.checkForRoutes],
   },
   {
     path: '/booking',
@@ -59,7 +62,14 @@ const routes = [
           name: 'success',
           component: () => import('@/views/booking/BookingSuccessPage.vue'),
         },
-    ]
+    ],
+    beforeEnter: [middlewares.checkForRoutes, middlewares.checkBearerToken],
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: () => import('@/views/ProfilePage.vue'),
+    beforeEnter: [middlewares.checkForRoutes, middlewares.checkBearerToken],
   },
   {
     path: '/anything',
