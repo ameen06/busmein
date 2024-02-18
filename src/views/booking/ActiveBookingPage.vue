@@ -37,6 +37,7 @@
 import {
   IonContent,
   IonPage,
+  IonHeader
 } from "@ionic/vue";
 import NavigationBar from '@/components/NavigationBar.vue'
 import BookingNavBar from '@/components/BookingNavBar.vue'
