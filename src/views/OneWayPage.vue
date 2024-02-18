@@ -80,7 +80,7 @@
             <!-- contianer -->
             <div class="w-full sm:px-10 px-4">
                 <!-- each one -->
-                <a href="">
+                <router-link :to="{name: 'passenger-info-page'}">
                     <div class="shadow-lg bg-white rounded-xl px-4 py-2 mt-3">
                         <div class=" border-b-[1px] border-slate-600 border-dashed px-2 py-1">
                             <div class="flex justify-between ">
@@ -119,8 +119,8 @@
                             </div>
                         </div>
                     </div>
-                </a>
-                <a href="">
+                </router-link>
+                <router-link :to="{name: 'passenger-info-page'}">
                     <div class="bg-white  shadow-lg rounded-xl px-4 py-2 mt-3">
                         <div class="border-b-[1px] border-slate-600 border-dashed px-2 py-1">
                             <div class="flex justify-between ">
@@ -159,8 +159,8 @@
                             </div>
                         </div>
                     </div>
-                </a>
-                <a href="">
+                </router-link>
+                <router-link :to="{name: 'passenger-info-page'}">
                     <div class="bg-white  shadow-lg  rounded-xl px-4 py-2 mt-3">
                         <div class="border-b-[1px] border-slate-600 border-dashed px-2 py-1">
                             <div class="flex justify-between ">
@@ -199,9 +199,16 @@
                             </div>
                         </div>
                     </div>
-                </a>
+                </router-link>
             </div>
         </div>
     </ion-content>
   </ion-page>
 </template>
+
+<script setup>
+import {
+  IonContent,
+  IonPage,
+} from "@ionic/vue";
+</script>

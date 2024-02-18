@@ -125,3 +125,10 @@
       </ion-content>
   </ion-page>
 </template>
+
+<script setup>
+import {
+  IonContent,
+  IonPage,
+} from "@ionic/vue";
+</script>

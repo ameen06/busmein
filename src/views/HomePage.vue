@@ -147,10 +147,9 @@
               </div>
             </div>
             <!-- button -->
-            <div
-              className="w-[258px] h-[48px] rounded-md border-[1.5px] bg-blue-800 text-white font-[700] text-[24px] text-center pt-1 mt-6"
-            >Search Buses
-            </div>
+            <router-link :to="{name: 'oneWay-selecting-page'}" className="w-[258px] h-[48px] rounded-md border-[1.5px] bg-blue-800 text-white font-[700] text-[24px] text-center pt-1 mt-6">
+              Search Buses
+            </router-link>
           </div>
            <!-- offer -->
           <div class="absolute top-[443px] left-[22px]">

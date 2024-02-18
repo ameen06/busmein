@@ -1,5 +1,5 @@
 <template>
-    <section class="flex flex-col items-center mb-2 relative">
+    <router-link :to="{name: 'ticke-details'}" class="flex flex-col items-center mb-2 relative">
       <div class="absolute top-[55px]  ml-[-345px] w-[16px] h-[22px] bg-white rounded-r-full"></div>
       <div class="absolute top-[55px]  ml-[345px]  w-[16px] h-[22px] bg-white rounded-l-full"></div>
       <div class=" bg-indigo-50 border-b-[1px] border-slate-700 border-dashed rounded-2xl flex justify-center items-center px-10 py-3 ">
@@ -43,7 +43,5 @@
           <p class="text-[10px]  font-[500] text-slate-500 mx-2">1 Person</p>
           <p class="text-[10px]  font-[500] text-slate-500 mx-2">$120</p>
       </div>
-    </section>
+    </router-link>
 </template>
-<script setup>
-</script>
