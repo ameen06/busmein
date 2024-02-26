@@ -19,3 +19,7 @@
 .router-link-active > .booking-nav-bg{
   @apply bg-blue-800 text-white;
 }
+
+#bookingsNav .router-link-active {
+  @apply bg-blue-700 text-white border-none shadow-md;
+}
