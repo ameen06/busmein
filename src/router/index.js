@@ -40,7 +40,8 @@ const routes = [
     children: [
         {
           path: '',
-          redirect: { name: 'active' }
+          redirect: { name: 'active' },
+          name: 'bookings',
         },
         {
             path: 'active',
