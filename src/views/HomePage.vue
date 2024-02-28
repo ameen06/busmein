@@ -14,7 +14,7 @@
           <p class="mt-4 text-lg font-bold text-white text-center">Book Your Bus Ticket</p>
           <div class="w-full max-w-sm mt-6 mx-auto rounded-2xl bg-white shadow-xl p-5 pt-7">
             <!-- pickup point -->
-            <div class="w-full rounded-md bg-slate-200 group group-focus:border-2 group-focus:border-blue-500">
+            <div v-on:click="handleLocationSelector('pickup')" class="w-full rounded-md bg-slate-200 group group-focus:border-2 group-focus:border-blue-500">
               <div class="w-full h-full flex items-center">
                 <!-- icon -->
                 <div class="flex justify-center items-end border-r-2 border-slate-300 py-3 px-2">
@@ -27,11 +27,11 @@
                   </svg>
                 </div>
                 <!-- input -->
-                <input type="text" id="first_name" class="w-full h-full p-3 bg-transparent text-gray-900 text-base rounded-r-md focus:ring-blue-500 focus:border-blue-500 block focus:outline-none hover:bg-transparent active:bg-transparent" placeholder="John" required />
+                <input type="text" v-model="pickupPointValue.name" class="w-full h-full p-3 bg-transparent text-gray-900 text-base rounded-r-md focus:ring-blue-500 focus:border-blue-500 block focus:outline-none hover:bg-transparent active:bg-transparent" placeholder="Pickup Location" required />
               </div>
             </div>
             <!-- dropping -->
-            <div class="w-full mt-4 rounded-md bg-slate-200 group group-focus:border-2 group-focus:border-blue-500">
+            <div v-on:click="handleLocationSelector('dropping')" class="w-full mt-4 rounded-md bg-slate-200 group group-focus:border-2 group-focus:border-blue-500">
               <div class="w-full h-full flex items-center">
                 <!-- icon -->
                 <div class="flex justify-center items-end border-r-2 border-slate-300 py-3 px-2">
@@ -44,7 +44,7 @@
                   </svg>
                 </div>
                 <!-- input -->
-                <input type="text" id="first_name" class="w-full h-full p-3 bg-transparent text-gray-900 text-base rounded-r-md focus:ring-blue-500 focus:border-blue-500 block focus:outline-none hover:bg-transparent active:bg-transparent" placeholder="John" required />
+                <input type="text" v-model="droppingPointValue.name" class="w-full h-full p-3 bg-transparent text-gray-900 text-base rounded-r-md focus:ring-blue-500 focus:border-blue-500 block focus:outline-none hover:bg-transparent active:bg-transparent" placeholder="Dropping Location" required />
               </div>
             </div>
             <!-- date -->
@@ -57,7 +57,7 @@
                   </svg>
                 </div>
                 <!-- input -->
-                <input type="date" id="first_name" min="2024-02-25" class="w-full h-full px-3 py-2 bg-transparent text-gray-900 text-base rounded-r-md focus:ring-blue-500 focus:border-blue-500 block focus:outline-none hover:bg-transparent active:bg-transparent" placeholder="John" required />
+                <input type="date" v-model="busSearchDate" id="first_name" min="2024-02-25" class="w-full h-full px-3 py-2 bg-transparent text-gray-900 text-base rounded-r-md focus:ring-blue-500 focus:border-blue-500 block focus:outline-none hover:bg-transparent active:bg-transparent" placeholder="John" required />
               </div>
             </div>
             <!-- one/round -->
@@ -72,9 +72,9 @@
               </div>
             </div>
             
-            <router-link :to="{name: 'oneWay-selecting-page'}" class="w-full block text-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg uppercase mt-4 px-4 py-2 focus:outline-none">
+            <button v-on:click="searchForBuses" class="w-full block text-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg uppercase mt-4 px-4 py-2 focus:outline-none">
               Search Buses
-            </router-link>
+            </button>
           </div>
 
            <!-- offer -->
@@ -105,10 +105,45 @@
           </div>
         </div>
       </div>
+
+      <ion-modal ref="locationGetterModal" :is-open="gettingLocations">
+        <ion-header class="w-full bg-blue-800 px-4 py-4 shadow-none flex items-center gap-2 justify-between">
+          <ion-title class="p-0 text-base font-medium text-white">Select {{activeLocationSelector == 'pickup' ? 'Pickup' : 'Dropping' }} Location</ion-title>
+          <button v-on:click="cancelLocationModal()" class="bg-transparent p-0">
+            <svg class="h-6 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path>
+            </svg>
+          </button>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <div v-if="!isLoadingLocations" class="relative">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+              <svg class="h-5 fill-gray-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path></svg>
+            </div>
+            <input type="text" v-model="locationInput" v-on:input="getFilteredLocations" id="input-group-1" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-2 focus:border-blue-500 block w-full ps-10 p-2.5 focus:outline-none" placeholder="Search Location">
+          </div>
+
+          <div v-if="!isLoadingLocations" class="w-full mt-4">
+            <IonList class="w-full p-0">
+              <IonItem v-for="location in filteredLocationList" :key="location.slug" v-on:click="setLocationValue(location)" class="w-full p-0">{{ location.name }}</IonItem>
+            </IonList>
+          </div>
+          <div v-else class="w-full mt-8 flex items-center gap-4">
+            <div role="status">
+              <svg aria-hidden="true" class="w-6 h-6 text-gray-200 animate-spin fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                  <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+              </svg>
+              <span class="sr-only">Loading...</span>
+            </div>
+            <p class="text-sm font-medium text-blue-600">Loading Locations...</p>
+          </div>
+        </ion-content>
+      </ion-modal>
     </ion-content>
 
     <!-- nav floating bar -->
-    <NavigationBar />
+    <NavigationBar v-if="!gettingLocations" />
   </ion-page>
 </template>
 
@@ -118,17 +153,101 @@ import {
   IonHeader,
   IonPage,
   IonTitle,
-  IonToolbar,
-  IonFooter,
+  IonModal,
+  IonItem,
+  IonList,
+  onIonViewDidEnter,
 } from "@ionic/vue";
 import NavigationBar from '@/components/NavigationBar.vue'
+import { ref } from "vue"
+import axios from '@/axios'
+import { useRouter } from "vue-router"
+import IonicPreference from '@/store/IonicPreference'
+
+const router = useRouter()
+
+var gettingLocations = ref(false)
+var locationGetterModal = ref()
+var pickupPointValue = ref({})
+var droppingPointValue = ref({})
+var activeLocationSelector = ref('')
+var locationInput = ref('')
+var locationsList = ref([])
+var isLoadingLocations = ref(true)
+var filteredLocationList = ref([])
+var busSearchDate = ref('')
+
+
+function handleLocationSelector(locationType){
+  activeLocationSelector.value = locationType
+  gettingLocations.value = true
+  getFilteredLocations()
+}
+
+function setLocationValue(location){
+  if(activeLocationSelector.value === 'pickup'){
+    pickupPointValue.value = location
+  }else{
+    droppingPointValue.value = location
+  }
+  gettingLocations.value = false
+  locationInput.value = ''
+}
+
+const getFilteredLocations = () => {
+  // reminder: already selected should be disabled !!!!
+  if (locationInput.value !== '') {
+    filteredLocationList.value = locationsList.value.filter((item) =>
+      item.name.toLowerCase().includes(locationInput.value.toLowerCase())
+    );
+  } else {
+    filteredLocationList.value = locationsList.value
+  }
+  
+  if(activeLocationSelector.value === 'pickup'){
+    filteredLocationList.value = filteredLocationList.value.filter((item) => 
+      item.type !== 'Dropping Point' ? true : false
+    );
+  }else if(activeLocationSelector.value === 'dropping'){
+    filteredLocationList.value = filteredLocationList.value.filter((item) => 
+      item.type !== 'Boarding Point' ? true : false
+    );
+  }
+}
+
+function cancelLocationModal(){
+  gettingLocations.value = false
+  locationGetterModal.value.$el.dismiss(null, 'cancel')
+  locationInput.value = ''
+}
+
+async function getLocations(){
+  await axios.get('destinations')
+    .then((response) => {
+      locationsList.value = response.data.destinations;
+      isLoadingLocations.value = false
+      console.log(response.data)
+    });
+}
+
+function searchForBuses(){
+  IonicPreference.setNewPreference('pickup_point', pickupPointValue.value.slug);
+  IonicPreference.setNewPreference('dropping_point', droppingPointValue.value.slug);
+  IonicPreference.setNewPreference('search_date', busSearchDate.value);
+  router.push({name: 'oneWay-selecting-page'});
+}
+
+onIonViewDidEnter(async () => {
+  await getLocations()
+})
 </script>
 
 <style scoped>
 input[type="date"]::-webkit-inner-spin-button,
 input[type="date"]::-webkit-calendar-picker-indicator {
-    /* display: none;
-    -webkit-appearance: none; */
-    opacity: 0;
+  opacity: 0;
+}
+.item-native {
+  padding: 0px !important;
 }
 </style>
