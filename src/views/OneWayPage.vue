@@ -12,22 +12,22 @@
                     <!-- details -->
                     <div class="block">
                         <div class="flex items-center gap-3">
-                            <p class="text-xl font-extrabold text-black">Delhi</p>
+                            <p class="text-xl font-extrabold text-black capitalize">{{ pickupPoint }}</p>
                             <svg class="h-4 fill-gray-400" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M18.8839 10.8839C19.372 10.3957 19.372 9.60427 18.8839 9.11612L10.9289 1.16117C10.4408 0.67301 9.6493 0.67301 9.16115 1.16117C8.67299 1.64932 8.67299 2.44078 9.16115 2.92893L16.2322 10L9.16115 17.0711C8.67299 17.5592 8.67299 18.3507 9.16115 18.8388C9.6493 19.327 10.4408 19.327 10.9289 18.8388L18.8839 10.8839ZM0.552612 11.25L18 11.25V8.75L0.552612 8.75L0.552612 11.25Z"/>
                             </svg>
-                            <p class="text-xl font-extrabold text-black">Pune</p>
+                            <p class="text-xl font-extrabold text-black capitalize">{{ droppingPoint }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-slate-600">10 Buses</p>
+                            <p class="text-sm text-slate-600">{{ items.length }} Buses</p>
                         </div>
                     </div>
                 </div>
                 <button class="flex flex-col items-center gap-1">
                     <div class="bg-blue-800 rounded-full flex justify-center items-center px-3 py-1.5">
-                        <p class="text-xs font-semibold text-white">15 Jan</p>
+                        <p class="text-xs font-semibold text-white">{{ searchedDateDayMonth }}</p>
                     </div>
-                    <p class="text-xs font-medium text-slate-600">Mon</p>
+                    <p class="text-xs font-medium text-slate-600">{{ searchedDateWeekday }}</p>
                 </button>
             </div>
         </ion-header>
@@ -110,7 +110,10 @@ import {
   IonContent,
   IonPage,
   IonHeader,
+  onIonViewDidEnter,
 } from "@ionic/vue";
+import IonicPreference from '@/store/IonicPreference'
+import { ref } from "vue"
 
 const items = [
     {
@@ -126,4 +129,32 @@ const items = [
         name: 'sdf'
     }
 ]
+const pickupPoint = ref('')
+const droppingPoint = ref('')
+const searchedDateDayMonth = ref('')
+const searchedDateWeekday = ref('')
+
+function convertDateToDayMonth(dateString) {
+  const [year, month, day] = dateString.split("-");
+  const date = new Date(year, month - 1, day);
+  return date.toLocaleDateString("en-US", { day: "2-digit", month: "short" });
+}
+function convertDateToWeekday(dateString) {
+  const date = new Date(dateString);
+  const dayOfWeek = date.getDay();
+  const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return weekdays[dayOfWeek];
+}
+
+async function getSearchPayload(){
+    pickupPoint.value = await IonicPreference.getPreference('pickup_point')
+    droppingPoint.value = await IonicPreference.getPreference('dropping_point')
+    const date = await IonicPreference.getPreference('search_date')
+    searchedDateDayMonth.value = convertDateToDayMonth(date)
+    searchedDateWeekday.value = convertDateToWeekday(date)
+}
+
+onIonViewDidEnter(async () => {
+  await getSearchPayload()
+})
 </script>
