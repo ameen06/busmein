@@ -67,6 +67,28 @@ const routes = [
     beforeEnter: [middlewares.checkForRoutes, middlewares.checkBearerToken],
   },
   {
+    path: '/locations',
+    component: () => import('@/views/locationMaster.vue'),
+    children: [
+        {
+          path: '',
+          redirect: { name: 'boarding-points' },
+          name: 'locations',
+        },
+        {
+            path: 'boarding-points',
+            name: 'boarding-points',
+            component: () => import('@/views/locations/BoardingPoint.vue'),
+        },
+        {
+            path: 'dropping-points',
+            name: 'dropping-points',
+            component: () => import('@/views/locations/DroppingPoint.vue'),
+        },
+    ],
+    //beforeEnter: [middlewares.checkForRoutes, middlewares.checkBearerToken],
+  },
+  {
     path: '/profile',
     name: 'profile',
     component: () => import('@/views/ProfilePage.vue'),
@@ -89,7 +111,7 @@ const routes = [
   },
   {
     path: '/ticket-details',
-    name: 'ticke-details',
+    name: 'ticket-details',
     component: () => import('@/views/TicketDetailsPage.vue'),
   },
   {

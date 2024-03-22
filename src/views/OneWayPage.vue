@@ -60,7 +60,7 @@
                 <!-- contianer -->
                 <div class="w-full mt-6">
                     <!-- each one -->
-                    <router-link v-for="item in items" :key="item.id" :to="{name: 'passenger-info-page'}" class="w-full">
+                    <router-link v-for="item in items" :key="item.id" :to="{name: 'seat-selects'}" class="w-full">
                         <div class="shadow bg-white rounded-xl px-4 py-2 mt-3">
                             <div class="w-full border-b border-slate-400 border-dashed pb-3">
                                 <div class="flex justify-between ">
