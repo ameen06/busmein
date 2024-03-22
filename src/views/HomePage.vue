@@ -12,7 +12,7 @@
         <div class="absolute top-[-175px] w-[550px] h-[550px] rounded-full bg-blue-800 shadow-2xl"></div>
         <div class="w-full absolute top-16 px-6">
           <p class="mt-4 text-lg font-bold text-white text-center">Book Your Bus Ticket</p>
-          <div class="w-full max-w-sm mt-6 mx-auto rounded-2xl bg-white shadow-xl p-5 pt-7">
+          <form method="GET" v-on:submit.prevent="searchForBuses" class="w-full max-w-sm mt-6 mx-auto rounded-2xl bg-white shadow-xl p-5 pt-7">
             <!-- pickup point -->
             <div v-on:click="handleLocationSelector('pickup')" class="w-full rounded-md bg-slate-200 group group-focus:border-2 group-focus:border-blue-500">
               <div class="w-full h-full flex items-center">
@@ -57,7 +57,7 @@
                   </svg>
                 </div>
                 <!-- input -->
-                <input type="date" v-model="busSearchDate" id="first_name" min="2024-02-25" class="w-full h-full px-3 py-2 bg-transparent text-gray-900 text-base rounded-r-md focus:ring-blue-500 focus:border-blue-500 block focus:outline-none hover:bg-transparent active:bg-transparent" placeholder="John" required />
+                <input type="date" v-model="busSearchDate" id="first_name" :min="minBookingDate" class="w-full h-full px-3 py-2 bg-transparent text-gray-900 text-base rounded-r-md focus:ring-blue-500 focus:border-blue-500 block focus:outline-none hover:bg-transparent active:bg-transparent" placeholder="John" required />
               </div>
             </div>
             <!-- one/round -->
@@ -72,10 +72,10 @@
               </div>
             </div>
             
-            <button v-on:click="searchForBuses" class="w-full block text-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg uppercase mt-4 px-4 py-2 focus:outline-none">
+            <button type="submit" class="w-full block text-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg uppercase mt-4 px-4 py-2 focus:outline-none">
               Search Buses
             </button>
-          </div>
+          </form>
 
            <!-- offer -->
           <div class="w-full max-w-sm mx-auto mt-8">
@@ -125,7 +125,7 @@
 
           <div v-if="!isLoadingLocations" class="w-full mt-4">
             <IonList class="w-full p-0">
-              <IonItem v-for="location in filteredLocationList" :key="location.slug" v-on:click="setLocationValue(location)" class="w-full p-0">{{ location.name }}</IonItem>
+              <IonItem v-for="location in filteredLocationList" :key="location.slug" v-on:click="setLocationValue({name:location.name,slug: location.slug})" :disabled="location.slug === pickupPointValue.slug || location.slug === droppingPointValue.slug" class="w-full p-0 text-gray-900 disabled:text-gray-400 focus:text-blue-800">{{ location.name }}</IonItem>
             </IonList>
           </div>
           <div v-else class="w-full mt-8 flex items-center gap-4">
@@ -176,6 +176,7 @@ var locationsList = ref([])
 var isLoadingLocations = ref(true)
 var filteredLocationList = ref([])
 var busSearchDate = ref('')
+const minBookingDate = new Date().toISOString().slice(0, 10)
 
 
 function handleLocationSelector(locationType){
@@ -185,6 +186,7 @@ function handleLocationSelector(locationType){
 }
 
 function setLocationValue(location){
+  console.log('location',location)
   if(activeLocationSelector.value === 'pickup'){
     pickupPointValue.value = location
   }else{
@@ -195,7 +197,7 @@ function setLocationValue(location){
 }
 
 const getFilteredLocations = () => {
-  // reminder: already selected should be disabled !!!!
+  // search locations
   if (locationInput.value !== '') {
     filteredLocationList.value = locationsList.value.filter((item) =>
       item.name.toLowerCase().includes(locationInput.value.toLowerCase())
@@ -204,10 +206,11 @@ const getFilteredLocations = () => {
     filteredLocationList.value = locationsList.value
   }
   
+  // filter by pickup/dropping locations
   if(activeLocationSelector.value === 'pickup'){
-    filteredLocationList.value = filteredLocationList.value.filter((item) => 
-      item.type !== 'Dropping Point' ? true : false
-    );
+    filteredLocationList.value = filteredLocationList.value.filter((item) => {
+      return item.type !== 'Dropping Point' ? true : false
+    });
   }else if(activeLocationSelector.value === 'dropping'){
     filteredLocationList.value = filteredLocationList.value.filter((item) => 
       item.type !== 'Boarding Point' ? true : false
@@ -226,7 +229,6 @@ async function getLocations(){
     .then((response) => {
       locationsList.value = response.data.destinations;
       isLoadingLocations.value = false
-      console.log(response.data)
     });
 }
 

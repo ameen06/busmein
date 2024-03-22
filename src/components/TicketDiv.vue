@@ -1,12 +1,12 @@
 <template>
-  <router-link :to="{name: 'ticke-details'}" class="w-full flex flex-col items-center mb-4 relative">
+  <router-link :to="{name: 'ticket-details'}" class="w-full flex flex-col items-center mb-4 relative">
     <div class="absolute top-[55px] left-0 w-[16px] h-[22px] bg-white rounded-r-full"></div>
     <div class="absolute top-[55px] right-0 w-[16px] h-[22px] bg-white rounded-l-full"></div>
     <div class="w-full bg-indigo-50 border-b-[1px] border-slate-700 border-dashed rounded-2xl flex justify-center items-center px-8 py-4">
         <div class="w-full flex justify-between">
           <div class="flex flex-col">
-            <p class="text-[12px] font-[600] text-blue-900">Delhi</p>
-            <p class="text-[11px] font-[400] text-slate-500">Jan 17, 12:00am</p>
+            <p class="text-[12px] font-[600] text-blue-900">{{ booking.boarding_point }}</p>
+            <p class="text-[11px] font-[400] text-slate-500">{{ formatDate(booking.boarding_time) }}</p>
           </div>
         <!-- middle svg -->
         <div class="flex justify-center items-center">
@@ -33,15 +33,50 @@
           </svg>
         </div>
         <div class="flex flex-col items-end">
-          <p class="text-[12px] font-[600] text-blue-900 ">Delhi</p>
-          <p class="text-[11px] font-[400] text-slate-500">Jan 17, 12:00am</p>
+          <p class="text-[12px] font-[600] text-blue-900 ">{{ booking.dropping_point }}</p>
+          <p class="text-[11px] font-[400] text-slate-500">{{ formatDate(booking.dropping_time) }}</p>
         </div>
       </div>
     </div>
     <div class="w-full bg-indigo-50 rounded-2xl flex justify-between items-center gap-4 px-8 py-4">
-        <p class="text-sm  font-medium text-slate-500">Today</p>
-        <p class="text-sm  font-medium text-slate-500">1 Person</p>
-        <p class="text-sm  font-medium text-slate-500">XAF 120</p>
+        <p class="text-sm  font-medium text-slate-500">{{ formatDateRelative(booking.created_at) }}</p>
+        <p class="text-sm  font-medium text-slate-500">{{ booking.total_passangers }} Person</p>
+        <p class="text-sm  font-medium text-slate-500">{{ booking.ticket_number }}</p>
     </div>
   </router-link>
 </template>
+<script setup>
+import { ref } from "vue"
+const props = defineProps(['booking'])
+const booking = ref(props.booking)
+const months = ref(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])
+
+// functions
+function formatDate(dateStr) {
+  const date = new Date(dateStr);
+  const monthNames = months.value
+
+  const day = date.getDate();
+  const month = monthNames[date.getMonth()];
+  const hour = date.getHours() % 12 || 12;  // Convert to 12-hour format
+  const minutes = date.getMinutes().toString().padStart(2, '0');
+  const meridian = date.getHours() >= 12 ? 'PM' : 'AM';
+
+  return `${month} ${day}, ${hour}:${minutes} ${meridian}`;
+}
+
+function formatDateRelative(dateStr) {
+  const today = new Date();
+  const inputDate = new Date(dateStr.split(' ')[0]); // Extract date part
+
+  const diffInDays = (inputDate - today) / (1000 * 60 * 60 * 24);
+
+  if (Math.abs(diffInDays) < 1) {
+    return diffInDays === 0 ? "Today" : (diffInDays > 0 ? "Tomorrow" : "Yesterday");
+  }
+
+  const monthNames = months.value
+
+  return `${monthNames[inputDate.getMonth()]} ${inputDate.getDate()}`;
+}
+</script>
