@@ -40,10 +40,11 @@ import { IonContent, IonPage, onIonViewDidEnter } from "@ionic/vue";
 import { ref } from "vue";
 import axios from '@/axios'
 import { useStore } from 'vuex'
-import { useRouter } from "vue-router"
+import { useRouter, useRoute } from "vue-router"
 import IonicPreference from '@/store/IonicPreference'
 
 const router = useRouter()
+const route = useRoute()
 const store = useStore()
 
 var code = ref('')
@@ -71,7 +72,11 @@ async function verify(){
       setUserState(response.data.user)
       IonicPreference.removePreference('user_mob_number');
       IonicPreference.setNewPreference('user_zxery', JSON.stringify(response.data.user));
-      router.push({name: 'home'});
+      if(route.query.redirect){
+        router.push({name: route.query.redirect});
+      }else{
+        router.push({name: 'home'});
+      }
       isLoading.value = false;
     }else{
       isLoading.value = false;

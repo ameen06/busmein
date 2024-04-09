@@ -87,25 +87,25 @@
             <div v-for="seat in seats" :key="seat" class="w-full grid grid-cols-2 gap-6">
               <div class="w-full flex items-center justify-center gap-2">
                 <div>
-                  <input type="checkbox" id="react-option" v-model="selectedSeats" :value="seat[0]" class="hidden peer" required>
-                  <label for="react-option" class="inline-flex items-center justify-between w-full bg-white rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-gray-600">
+                  <input type="checkbox" :id="'react-option' + seat[0]" v-model="selectedSeats" :value="seat[0]" class="hidden peer" required>
+                  <label :for="'react-option' + seat[0]" class="inline-flex items-center justify-between w-full bg-white rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-gray-600">
                       <svg class="h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28">
                         <g fill="none" fill-rule="evenodd">
                           <path d="M0 0h28v27H0z"/>
-                          <path d="M4 10V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2z" class="fill-green-400 peer-checked:fill-blue-400"/>
-                          <path d="M22 2a2 2 0 0 1 2 2v6c1.105 0 2 .895 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2V4a2 2 0 0 1 2-2h16zM6 11H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h20a1 1 0 0 0 1-1V12a1 1 0 0 0-1-1h-2v7.925a2.4 2.4 0 0 1-1.83 2.332 25.521 25.521 0 0 1-6.087.743 27.03 27.03 0 0 1-6.236-.75A2.4 2.4 0 0 1 6 18.914V11zm16-8H6a1 1 0 0 0-1 1v6h1a1 1 0 0 1 1 1v7.914a1.4 1.4 0 0 0 1.078 1.362 26.03 26.03 0 0 0 6.005.724c1.953 0 3.903-.238 5.85-.715A1.4 1.4 0 0 0 21 18.925V11a1 1 0 0 1 1-1h1V4a1 1 0 0 0-1-1z" class="fill-green-700 peer-checked:fill-blue-700" fill-rule="nonzero"/>
+                          <path d="M4 10V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2z" class="fill-green-400 seat-bg"/>
+                          <path d="M22 2a2 2 0 0 1 2 2v6c1.105 0 2 .895 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2V4a2 2 0 0 1 2-2h16zM6 11H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h20a1 1 0 0 0 1-1V12a1 1 0 0 0-1-1h-2v7.925a2.4 2.4 0 0 1-1.83 2.332 25.521 25.521 0 0 1-6.087.743 27.03 27.03 0 0 1-6.236-.75A2.4 2.4 0 0 1 6 18.914V11zm16-8H6a1 1 0 0 0-1 1v6h1a1 1 0 0 1 1 1v7.914a1.4 1.4 0 0 0 1.078 1.362 26.03 26.03 0 0 0 6.005.724c1.953 0 3.903-.238 5.85-.715A1.4 1.4 0 0 0 21 18.925V11a1 1 0 0 1 1-1h1V4a1 1 0 0 0-1-1z" class="fill-green-700 seat-stroke" fill-rule="nonzero"/>
                         </g>
                       </svg>
                   </label>
                 </div>
                 <div>
-                  <input type="checkbox" id="react-option" :value="seat[1]" v-model="selectedSeats" class="hidden peer" required>
-                  <label for="react-option" class="inline-flex items-center justify-between w-full bg-white rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-gray-600">
-                      <svg class="h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28">
+                  <input type="checkbox" :id="'react-option' + seat[1]" :value="seat[1]" v-model="selectedSeats" class="hidden peer" required>
+                  <label :for="'react-option' + seat[1]" class="inline-flex items-center justify-between w-full bg-white rounded-lg cursor-pointer">
+                      <svg class="h-8 group" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28">
                         <g fill="none" fill-rule="evenodd">
                           <path d="M0 0h28v27H0z"/>
-                          <path d="M4 10V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2z" class="fill-green-400 peer-checked:fill-blue-400"/>
-                          <path d="M22 2a2 2 0 0 1 2 2v6c1.105 0 2 .895 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2V4a2 2 0 0 1 2-2h16zM6 11H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h20a1 1 0 0 0 1-1V12a1 1 0 0 0-1-1h-2v7.925a2.4 2.4 0 0 1-1.83 2.332 25.521 25.521 0 0 1-6.087.743 27.03 27.03 0 0 1-6.236-.75A2.4 2.4 0 0 1 6 18.914V11zm16-8H6a1 1 0 0 0-1 1v6h1a1 1 0 0 1 1 1v7.914a1.4 1.4 0 0 0 1.078 1.362 26.03 26.03 0 0 0 6.005.724c1.953 0 3.903-.238 5.85-.715A1.4 1.4 0 0 0 21 18.925V11a1 1 0 0 1 1-1h1V4a1 1 0 0 0-1-1z" class="fill-green-700 peer-checked:fill-blue-700" fill-rule="nonzero"/>
+                          <path d="M4 10V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2z" class="seat-bg fill-green-400"/>
+                          <path d="M22 2a2 2 0 0 1 2 2v6c1.105 0 2 .895 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2V4a2 2 0 0 1 2-2h16zM6 11H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h20a1 1 0 0 0 1-1V12a1 1 0 0 0-1-1h-2v7.925a2.4 2.4 0 0 1-1.83 2.332 25.521 25.521 0 0 1-6.087.743 27.03 27.03 0 0 1-6.236-.75A2.4 2.4 0 0 1 6 18.914V11zm16-8H6a1 1 0 0 0-1 1v6h1a1 1 0 0 1 1 1v7.914a1.4 1.4 0 0 0 1.078 1.362 26.03 26.03 0 0 0 6.005.724c1.953 0 3.903-.238 5.85-.715A1.4 1.4 0 0 0 21 18.925V11a1 1 0 0 1 1-1h1V4a1 1 0 0 0-1-1z" class="seat-stroke fill-green-700" fill-rule="nonzero"/>
                         </g>
                       </svg>
                   </label>
@@ -114,25 +114,25 @@
 
               <div class="w-full flex items-center justify-center gap-2">
                 <div>
-                  <input type="checkbox" id="react-option" :value="seat[2]" v-model="selectedSeats" class="hidden peer" required>
-                  <label for="react-option" class="inline-flex items-center justify-between w-full bg-white rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-gray-600">
+                  <input type="checkbox" :id="'react-option' + seat[2]" :value="seat[2]" v-model="selectedSeats" class="hidden peer" required>
+                  <label :for="'react-option' + seat[2]" class="inline-flex items-center justify-between w-full bg-white rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-gray-600">
                       <svg class="h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28">
                         <g fill="none" fill-rule="evenodd">
                           <path d="M0 0h28v27H0z"/>
-                          <path d="M4 10V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2z" class="fill-green-400 peer-checked:fill-blue-400"/>
-                          <path d="M22 2a2 2 0 0 1 2 2v6c1.105 0 2 .895 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2V4a2 2 0 0 1 2-2h16zM6 11H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h20a1 1 0 0 0 1-1V12a1 1 0 0 0-1-1h-2v7.925a2.4 2.4 0 0 1-1.83 2.332 25.521 25.521 0 0 1-6.087.743 27.03 27.03 0 0 1-6.236-.75A2.4 2.4 0 0 1 6 18.914V11zm16-8H6a1 1 0 0 0-1 1v6h1a1 1 0 0 1 1 1v7.914a1.4 1.4 0 0 0 1.078 1.362 26.03 26.03 0 0 0 6.005.724c1.953 0 3.903-.238 5.85-.715A1.4 1.4 0 0 0 21 18.925V11a1 1 0 0 1 1-1h1V4a1 1 0 0 0-1-1z" class="fill-green-700 peer-checked:fill-blue-700" fill-rule="nonzero"/>
+                          <path d="M4 10V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2z" class="fill-green-400 seat-bg"/>
+                          <path d="M22 2a2 2 0 0 1 2 2v6c1.105 0 2 .895 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2V4a2 2 0 0 1 2-2h16zM6 11H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h20a1 1 0 0 0 1-1V12a1 1 0 0 0-1-1h-2v7.925a2.4 2.4 0 0 1-1.83 2.332 25.521 25.521 0 0 1-6.087.743 27.03 27.03 0 0 1-6.236-.75A2.4 2.4 0 0 1 6 18.914V11zm16-8H6a1 1 0 0 0-1 1v6h1a1 1 0 0 1 1 1v7.914a1.4 1.4 0 0 0 1.078 1.362 26.03 26.03 0 0 0 6.005.724c1.953 0 3.903-.238 5.85-.715A1.4 1.4 0 0 0 21 18.925V11a1 1 0 0 1 1-1h1V4a1 1 0 0 0-1-1z" class="fill-green-700 seat-stroke" fill-rule="nonzero"/>
                         </g>
                       </svg>
                   </label>
                 </div>
                 <div>
-                  <input type="checkbox" id="react-option" :value="seat[3]" class="hidden peer" required>
-                  <label for="react-option" class="inline-flex items-center justify-between w-full bg-white rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-gray-600">
+                  <input type="checkbox" :id="'react-option' + seat[3]" :value="seat[3]" v-model="selectedSeats" class="hidden peer" required>
+                  <label :for="'react-option' + seat[3]" class="inline-flex items-center justify-between w-full bg-white rounded-lg cursor-pointer peer-checked:border-blue-600 peer-checked:text-gray-600">
                       <svg class="h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28">
                         <g fill="none" fill-rule="evenodd">
                           <path d="M0 0h28v27H0z"/>
-                          <path d="M4 10V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2z" class="fill-green-400 peer-checked:fill-blue-400"/>
-                          <path d="M22 2a2 2 0 0 1 2 2v6c1.105 0 2 .895 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2V4a2 2 0 0 1 2-2h16zM6 11H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h20a1 1 0 0 0 1-1V12a1 1 0 0 0-1-1h-2v7.925a2.4 2.4 0 0 1-1.83 2.332 25.521 25.521 0 0 1-6.087.743 27.03 27.03 0 0 1-6.236-.75A2.4 2.4 0 0 1 6 18.914V11zm16-8H6a1 1 0 0 0-1 1v6h1a1 1 0 0 1 1 1v7.914a1.4 1.4 0 0 0 1.078 1.362 26.03 26.03 0 0 0 6.005.724c1.953 0 3.903-.238 5.85-.715A1.4 1.4 0 0 0 21 18.925V11a1 1 0 0 1 1-1h1V4a1 1 0 0 0-1-1z" class="fill-green-700 peer-checked:fill-blue-700" fill-rule="nonzero"/>
+                          <path d="M4 10V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2z" class="fill-green-400 seat-bg"/>
+                          <path d="M22 2a2 2 0 0 1 2 2v6c1.105 0 2 .895 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12a2 2 0 0 1 2-2V4a2 2 0 0 1 2-2h16zM6 11H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h20a1 1 0 0 0 1-1V12a1 1 0 0 0-1-1h-2v7.925a2.4 2.4 0 0 1-1.83 2.332 25.521 25.521 0 0 1-6.087.743 27.03 27.03 0 0 1-6.236-.75A2.4 2.4 0 0 1 6 18.914V11zm16-8H6a1 1 0 0 0-1 1v6h1a1 1 0 0 1 1 1v7.914a1.4 1.4 0 0 0 1.078 1.362 26.03 26.03 0 0 0 6.005.724c1.953 0 3.903-.238 5.85-.715A1.4 1.4 0 0 0 21 18.925V11a1 1 0 0 1 1-1h1V4a1 1 0 0 0-1-1z" class="fill-green-700 seat-stroke" fill-rule="nonzero"/>
                         </g>
                       </svg>
                   </label>
@@ -143,10 +143,10 @@
         </div>
 
         <!-- next button -->
-        <router-link :to="{name: 'passenger-info-page'}" class="w-full block text-center mt-6 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-base px-5 py-3 focus:outline-none">Select Boarding & Droppoing Point</router-link>
+        <button v-on:click="confirmSeats" class="w-full block text-center mt-6 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-base px-5 py-3 focus:outline-none">Select Boarding & Droppoing Point</button>
       </div>
     </ion-content>
-    <ion-footer class="bg-white rounded-t-md shadow-2xl" :translucent="false">
+    <ion-footer class="bg-white rounded-t-md shadow-2xl hidden" :translucent="false">
       <button v-on:click="console.log('clicked')" class="w-full px-4 py-4">
         <div class="w-4/12 max-w-sm bg-gray-300 h-1.5 rounded-full mx-auto"></div>
 
@@ -174,7 +174,9 @@ IonFooter,
 onIonViewDidEnter,
 } from "@ionic/vue";
 import IonicPreference from '@/store/IonicPreference';
-import { ref } from "vue";
+import { ref, watch } from "vue";
+import { useRouter } from "vue-router"
+const router = useRouter()
 
 const pickupPoint = ref('')
 const droppingPoint = ref('')
@@ -193,16 +195,28 @@ const seats = ref([
   [37,38,39,40],
 ])
 
-function add(value) {
- console.log(value)
-}
+watch(selectedSeats, (val) => console.log(new Set(val)))
 
 async function getSearchPayload(){
   pickupPoint.value = await IonicPreference.getPreference('pickup_point')
   droppingPoint.value = await IonicPreference.getPreference('dropping_point')
 }
 
+function confirmSeats(){
+  IonicPreference.setNewPreference('selected_seats', JSON.stringify(selectedSeats.value));
+  router.push({name: 'boarding-points'});
+}
+
 onIonViewDidEnter(async () => {
-await getSearchPayload()
+  await getSearchPayload()
 })
 </script>
+
+<style scoped>
+.peer:checked ~ label > svg path.seat-bg {
+  fill: #60a5fa;
+}
+.peer:checked ~ label > svg path.seat-stroke {
+  fill: #1d4ed8;
+}
+</style>

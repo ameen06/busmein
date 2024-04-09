@@ -2,7 +2,7 @@
     <ion-page>
         <ion-header class="bg-white shadow-none" :translucent="false">
             <div class="w-full h-full border-b border-gray-300 flex justify-between items-center px-4 py-2">
-                <div class="flex items-center gap-4">
+                <div class="w-full max-w-[80%] md:max-w-full flex items-center gap-4">
                     <!-- back arrow -->
                     <button v-on:click="$router.go(-1)" class="focus:outline-none focus:fill-blue-600">
                         <svg class="h-6 fill-black" viewBox="0 0 14 24" xmlns="http://www.w3.org/2000/svg">
@@ -10,16 +10,16 @@
                         </svg>
                     </button>
                     <!-- details -->
-                    <div class="block">
-                        <div class="flex items-center gap-3">
-                            <p class="text-xl font-extrabold text-black capitalize">{{ pickupPoint }}</p>
+                    <div class="block w-full max-w-[90%] md:max-w-[unset]">
+                        <div class="w-full flex items-center gap-3">
+                            <p class="m-0 text-xl font-extrabold text-black capitalize line-clamp-1">{{ pickupPoint }}</p>
                             <svg class="h-4 fill-gray-400" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M18.8839 10.8839C19.372 10.3957 19.372 9.60427 18.8839 9.11612L10.9289 1.16117C10.4408 0.67301 9.6493 0.67301 9.16115 1.16117C8.67299 1.64932 8.67299 2.44078 9.16115 2.92893L16.2322 10L9.16115 17.0711C8.67299 17.5592 8.67299 18.3507 9.16115 18.8388C9.6493 19.327 10.4408 19.327 10.9289 18.8388L18.8839 10.8839ZM0.552612 11.25L18 11.25V8.75L0.552612 8.75L0.552612 11.25Z"/>
                             </svg>
-                            <p class="text-xl font-extrabold text-black capitalize">{{ droppingPoint }}</p>
+                            <p class="m-0 text-xl font-extrabold text-black capitalize line-clamp-1">{{ droppingPoint }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-slate-600">{{ items.length }} Buses</p>
+                            <p class="text-sm text-slate-600">{{ availableBuses.length }} Buses</p>
                         </div>
                     </div>
                 </div>
@@ -32,7 +32,21 @@
             </div>
         </ion-header>
         <ion-content :fullscreen="true">
-            <div class="w-full min-h-screen bg-slate-100 p-6">
+            <!-- page loader -->
+            <div v-if="isLoading" class="w-full mt-8">
+                <div class="w-full flex justify-center items-center gap-4">
+                    <div role="status">
+                        <svg aria-hidden="true" class="w-8 h-8 text-gray-300 animate-spin fill-blue-600" viewBox="0 0 100 101" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                            <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+                        </svg>
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <p class="text-lg font-semibold text-blue-900">Loading Available Buses</p>
+                </div>
+            </div>
+
+            <div v-else class="w-full min-h-screen bg-slate-100 p-6">
                 <div class="w-full flex justify-start items-center gap-4">
                     <!-- filer -->
                     <button class="bg-white rounded-lg focus:bg-gray-300">
@@ -59,30 +73,33 @@
 
                 <!-- contianer -->
                 <div class="w-full mt-6">
+                    <div v-if="availableBuses.length == 0" class="w-full text-center">
+                        <p>No buses found for your search</p>
+                    </div>
                     <!-- each one -->
-                    <router-link v-for="item in items" :key="item.id" :to="{name: 'seat-selects'}" class="w-full">
+                    <div v-else v-for="item in availableBuses" :key="item.bus.id" v-on:click="selectBus(item)" class="w-full">
                         <div class="shadow bg-white rounded-xl px-4 py-2 mt-3">
                             <div class="w-full border-b border-slate-400 border-dashed pb-3">
                                 <div class="flex justify-between ">
                                     <div class="">
                                         <div class="">
-                                            <p class="text-base font-bold text-black">12:00 - 6:00</p>
+                                            <p class="text-base font-bold text-black">{{ item.boarding_time }} - {{ item.dropping_time }}</p>
                                         </div>
                                         <div class="flex justify-between items-center gap-3">
-                                            <p class="text-xs font-[600] text-slate-600">6h 10m</p>
-                                            <p class="text-xs font-[600] text-slate-600">50 Seats</p>
+                                            <p class="text-xs font-[600] text-slate-600">{{ item.total_hours }}</p>
+                                            <p class="text-xs font-[600] text-slate-600">{{ item.bus.total_seats }} Seats</p>
                                         </div>
                                     </div>
                                     <div class="flex justify-center items-center">
                                         <div class="bg-blue-300 rounded-md flex justify-center items-center py-1 px-3">
-                                            <p class="text-xs font-semibold text-blue-900">CHEAPEST</p>
+                                            <p class="text-xs font-semibold text-blue-900 uppercase">{{ item.bus.badge }}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- bus details -->
                                 <div class="pt-2">
-                                    <p class="text-xl font-semibold text-black">Chartered Bus - HGS</p>
-                                    <p class="text-xs font-medium text-slate-600">Volvo Multi Luxury Bus | Sleeper</p>
+                                    <p class="text-xl font-semibold text-black">{{ item.bus.bus_name }}</p>
+                                    <p class="text-xs font-medium text-slate-600">{{ item.bus.subtext }}</p>
                                 </div>
                             </div>
                             <!-- second div -->
@@ -91,14 +108,14 @@
                                     <svg class="h-3 fill-yellow-400" viewBox="0 0 11 10" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M5.49999 0L6.79837 3.81966H11L7.6008 6.18034L8.8046 10L5.49999 7.63932L2.10081 10L3.39918 6.18034L0 3.81966H4.20162L5.49999 0Z"/>
                                     </svg>
-                                    <p class="text-xs font-medium text-white pl-1 pt-[1px]">4.5</p>
+                                    <p class="text-xs font-medium text-white pl-1 pt-[1px]">{{ item.bus.rating }}</p>
                                 </div>
                                 <div>
-                                    <p class="font-semibold text-black">$120</p>
+                                    <p class="font-semibold text-black">${{ item.price }}</p>
                                 </div>
                             </div>
                         </div>
-                    </router-link>
+                    </div>
                 </div>
             </div>
         </ion-content>
@@ -114,25 +131,17 @@ import {
 } from "@ionic/vue";
 import IonicPreference from '@/store/IonicPreference'
 import { ref } from "vue"
+import axios from '@/axios'
+import { useRouter } from "vue-router"
 
-const items = [
-    {
-        id: '1',
-        name: 'sdf'
-    },
-    {
-        id: '2',
-        name: 'sdf'
-    },
-    {
-        id: '3',
-        name: 'sdf'
-    }
-]
+const router = useRouter()
+const availableBuses = ref([])
 const pickupPoint = ref('')
 const droppingPoint = ref('')
+const searchDate = ref()
 const searchedDateDayMonth = ref('')
 const searchedDateWeekday = ref('')
+const isLoading = ref(true)
 
 function convertDateToDayMonth(dateString) {
   const [year, month, day] = dateString.split("-");
@@ -150,11 +159,36 @@ async function getSearchPayload(){
     pickupPoint.value = await IonicPreference.getPreference('pickup_point')
     droppingPoint.value = await IonicPreference.getPreference('dropping_point')
     const date = await IonicPreference.getPreference('search_date')
+    searchDate.value = date
     searchedDateDayMonth.value = convertDateToDayMonth(date)
     searchedDateWeekday.value = convertDateToWeekday(date)
 }
 
+
+function selectBus(item) {
+    IonicPreference.setNewPreference('selected_bus', JSON.stringify(item));
+    router.push({name: 'seat-selects'});
+}
+
+async function getAvailableBuses(){
+    await axios.post('auth/getBusForRoute', {
+        'boarding_point': pickupPoint.value,
+        'dropping_point': droppingPoint.value,
+        'date': searchDate.value
+    })
+    .then((response) => {
+        availableBuses.value = response.data.buses;
+        isLoading.value = false
+    })
+    .catch(function(error){
+        isLoading.value = false;
+    });
+}
+
 onIonViewDidEnter(async () => {
-  await getSearchPayload()
+    // await axios.get('sanctum/csrf-cookie', {baseURL: 'https://busmein.flypomo.com/'}).then(async function(){
+        await getSearchPayload()
+        await getAvailableBuses()
+    // })
 })
 </script>

@@ -88,10 +88,11 @@ import { IonContent, IonPage, IonToast, onIonViewDidEnter } from "@ionic/vue"
 import { ref } from "vue"
 import axios from '@/axios'
 import { useStore } from 'vuex'
-import { useRouter } from "vue-router"
+import { useRouter, useRoute } from "vue-router"
 import IonicPreference from '@/store/IonicPreference'
 
 const router = useRouter()
+const route = useRoute()
 const store = useStore()
 
 var phone = ref('')
@@ -116,7 +117,11 @@ async function login(){
     if(response.status == 200){
       setUserState({phone: phone.value})
       IonicPreference.setNewPreference('user_mob_number', phone.value);
-      router.push({name: 'verify-otp'});
+      if(route.query.redirect){
+        router.push({name: 'verify-otp', query: {redirect: route.query.redirect}});
+      }else{
+        router.push({name: 'verify-otp'});
+      }
       isLoading.value = false;
     }else{
       isLoading.value = false;
@@ -130,6 +135,7 @@ async function login(){
 }
 
 onIonViewDidEnter(async () => {
+  console.log(route.query.redirect);
     // await axios.get('sanctum/csrf-cookie', {baseURL: 'http://127.0.0.1:8000/'})
     // .catch(function(error){
     //     isLoading.value = false;

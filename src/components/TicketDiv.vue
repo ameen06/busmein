@@ -5,7 +5,7 @@
     <div class="w-full bg-indigo-50 border-b-[1px] border-slate-700 border-dashed rounded-2xl flex justify-center items-center px-8 py-4">
         <div class="w-full flex justify-between">
           <div class="flex flex-col">
-            <p class="text-[12px] font-[600] text-blue-900">{{ booking.boarding_point }}</p>
+            <p class="text-[12px] font-[600] text-blue-900">{{ booking.boarding.name }}</p>
             <p class="text-[11px] font-[400] text-slate-500">{{ formatDate(booking.boarding_time) }}</p>
           </div>
         <!-- middle svg -->
@@ -33,7 +33,7 @@
           </svg>
         </div>
         <div class="flex flex-col items-end">
-          <p class="text-[12px] font-[600] text-blue-900 ">{{ booking.dropping_point }}</p>
+          <p class="text-[12px] font-[600] text-blue-900 ">{{ booking.dropping.name }}</p>
           <p class="text-[11px] font-[400] text-slate-500">{{ formatDate(booking.dropping_time) }}</p>
         </div>
       </div>
